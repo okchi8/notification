@@ -1,0 +1,1070 @@
+2025-06-05 06:42:46,158 - root - INFO - Logging configured.
+2025-06-05 06:42:46,166 - root - INFO - Application starting...
+2025-06-05 06:42:46,166 - root - INFO - Camera IPs: 192.168.1.106, 192.168.1.107, 192.168.1.108
+2025-06-05 06:42:46,167 - root - INFO - Telegram Bot Token: YOUR_TELEGRAM_BOT_TOKEN_HERE
+2025-06-05 06:42:46,167 - root - INFO - VIP List CSV Path: data/vip_list.csv
+2025-06-05 06:42:46,167 - root - INFO - Application finished (placeholder).
+2025-06-05 06:44:09,391 - root - INFO - Logging configured.
+2025-06-05 06:44:09,391 - root - INFO - Application starting...
+2025-06-05 06:44:09,391 - root - INFO - Camera IPs: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 06:44:09,391 - root - INFO - Telegram Bot Token: YOUR_TELEGRAM_BOT_TOKEN_HERE
+2025-06-05 06:44:09,391 - root - INFO - VIP List CSV Path: data/vip_list.csv
+2025-06-05 06:44:09,391 - root - INFO - Starting mock detection loop for 10 iterations...
+2025-06-05 06:44:09,403 - root - INFO - Detected: XYZ7890 on 192.168.1.106 at 2025-06-05 06:44:09.391912
+2025-06-05 06:44:09,403 - root - INFO - Detected: VISITOR99 on 192.168.1.107 at 2025-06-05 06:44:09.403222
+2025-06-05 06:44:10,404 - root - INFO - Detected: VIP007 on 192.168.1.107 at 2025-06-05 06:44:10.404776
+2025-06-05 06:44:10,405 - root - INFO - Detected: VIP001 on 192.168.1.108 at 2025-06-05 06:44:10.404789
+2025-06-05 06:44:11,406 - root - INFO - Detected: STAFF05 on 192.168.1.106 at 2025-06-05 06:44:11.406635
+2025-06-05 06:44:12,408 - root - INFO - Detected: VISITOR99 on 192.168.1.106 at 2025-06-05 06:44:12.408109
+2025-06-05 06:44:12,408 - root - INFO - Detected: VIP002 on 192.168.1.107 at 2025-06-05 06:44:12.408121
+2025-06-05 06:44:12,408 - root - INFO - Detected: DEMO002 on 192.168.1.108 at 2025-06-05 06:44:12.408124
+2025-06-05 06:44:13,409 - root - INFO - Detected: VIP001 on 192.168.1.107 at 2025-06-05 06:44:13.409698
+2025-06-05 06:44:14,411 - root - INFO - Detected: ABC1234 on 192.168.1.106 at 2025-06-05 06:44:14.411171
+2025-06-05 06:44:14,411 - root - INFO - Detected: XYZ7890 on 192.168.1.108 at 2025-06-05 06:44:14.411184
+2025-06-05 06:44:15,412 - root - INFO - Detected: LIC73NS on 192.168.1.108 at 2025-06-05 06:44:15.412756
+2025-06-05 06:44:16,414 - root - INFO - Detected: ABC1234 on 192.168.1.107 at 2025-06-05 06:44:16.414376
+2025-06-05 06:44:17,416 - root - INFO - Detected: TEST001 on 192.168.1.106 at 2025-06-05 06:44:17.415919
+2025-06-05 06:44:17,416 - root - INFO - Detected: TEMP003 on 192.168.1.108 at 2025-06-05 06:44:17.415934
+2025-06-05 06:44:18,417 - root - INFO - Detected: VIP007 on 192.168.1.108 at 2025-06-05 06:44:18.417606
+2025-06-05 06:44:19,419 - root - INFO - Application finished mock detection loop.
+2025-06-05 06:45:47,458 - root - INFO - Logging configured.
+2025-06-05 06:45:47,458 - root - INFO - Application starting...
+2025-06-05 06:45:47,458 - root - INFO - Camera IPs: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 06:45:47,458 - root - INFO - VIP List CSV Path: data/vip_list.csv
+2025-06-05 06:45:47,458 - root - INFO - Successfully loaded 5 records from data/vip_list.csv
+2025-06-05 06:45:47,459 - root - INFO - Telegram Bot Token: YOUR_TELEGRAM_BOT_TOKEN_HERE
+2025-06-05 06:45:47,459 - root - INFO - Starting mock detection loop for 15 iterations...
+2025-06-05 06:45:47,459 - root - INFO - Detected: TEMP003 on 192.168.1.106 at 2025-06-05 06:45:47.459121
+2025-06-05 06:45:47,459 - root - INFO - Detected: VISITOR99 on 192.168.1.107 at 2025-06-05 06:45:47.459129
+2025-06-05 06:45:47,459 - root - INFO - Detected: ABC1234 on 192.168.1.108 at 2025-06-05 06:45:47.459131
+2025-06-05 06:45:47,459 - root - INFO - VIP DETECTED: ABC1234! Details: {'PlateNumber': 'ABC1234', 'Name': 'John Doe', 'HouseNumber': '101', 'Lane': 'A', 'ChatID': 'chatid_john', 'Type': 'Resident'}
+2025-06-05 06:45:47,960 - root - INFO - Detected: VIP002 on 192.168.1.106 at 2025-06-05 06:45:47.960099
+2025-06-05 06:45:47,960 - root - INFO - Detected: BOSS01 on 192.168.1.107 at 2025-06-05 06:45:47.960119
+2025-06-05 06:45:47,960 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:45:48,461 - root - INFO - Detected: TEST001 on 192.168.1.106 at 2025-06-05 06:45:48.461227
+2025-06-05 06:45:48,962 - root - INFO - Detected: DEMO002 on 192.168.1.106 at 2025-06-05 06:45:48.962248
+2025-06-05 06:45:48,962 - root - INFO - Detected: VIP001 on 192.168.1.107 at 2025-06-05 06:45:48.962262
+2025-06-05 06:45:48,962 - root - INFO - VIP DETECTED: VIP001! Details: {'PlateNumber': 'VIP001', 'Name': 'Mr. Important', 'HouseNumber': '1', 'Lane': 'Main Lane', 'ChatID': 'chatid_vip1', 'Type': 'VIP'}
+2025-06-05 06:45:49,463 - root - INFO - Detected: STAFF05 on 192.168.1.106 at 2025-06-05 06:45:49.463371
+2025-06-05 06:45:49,463 - root - INFO - Detected: VIP007 on 192.168.1.107 at 2025-06-05 06:45:49.463383
+2025-06-05 06:45:49,463 - root - INFO - Detected: TEST001 on 192.168.1.108 at 2025-06-05 06:45:49.463386
+2025-06-05 06:45:49,964 - root - INFO - Detected: VIP001 on 192.168.1.106 at 2025-06-05 06:45:49.964401
+2025-06-05 06:45:49,964 - root - INFO - VIP DETECTED: VIP001! Details: {'PlateNumber': 'VIP001', 'Name': 'Mr. Important', 'HouseNumber': '1', 'Lane': 'Main Lane', 'ChatID': 'chatid_vip1', 'Type': 'VIP'}
+2025-06-05 06:45:49,964 - root - INFO - Detected: DEMO002 on 192.168.1.107 at 2025-06-05 06:45:49.964416
+2025-06-05 06:45:50,465 - root - INFO - Detected: DEMO002 on 192.168.1.108 at 2025-06-05 06:45:50.465515
+2025-06-05 06:45:50,966 - root - INFO - Detected: LIC73NS on 192.168.1.106 at 2025-06-05 06:45:50.966447
+2025-06-05 06:45:51,467 - root - INFO - Detected: STAFF05 on 192.168.1.107 at 2025-06-05 06:45:51.467359
+2025-06-05 06:45:51,467 - root - INFO - Detected: REGULAR1 on 192.168.1.108 at 2025-06-05 06:45:51.467370
+2025-06-05 06:45:51,968 - root - INFO - Detected: VIP007 on 192.168.1.106 at 2025-06-05 06:45:51.968460
+2025-06-05 06:45:51,968 - root - INFO - Detected: VIP002 on 192.168.1.107 at 2025-06-05 06:45:51.968476
+2025-06-05 06:45:51,968 - root - INFO - Detected: BOSS01 on 192.168.1.108 at 2025-06-05 06:45:51.968479
+2025-06-05 06:45:51,968 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:45:52,469 - root - INFO - Detected: REGULAR1 on 192.168.1.107 at 2025-06-05 06:45:52.469623
+2025-06-05 06:45:52,469 - root - INFO - Detected: VISITOR99 on 192.168.1.108 at 2025-06-05 06:45:52.469635
+2025-06-05 06:45:52,970 - root - INFO - Detected: XYZ7890 on 192.168.1.107 at 2025-06-05 06:45:52.970626
+2025-06-05 06:45:52,970 - root - INFO - VIP DETECTED: XYZ7890! Details: {'PlateNumber': 'XYZ7890', 'Name': 'Jane Smith', 'HouseNumber': '202', 'Lane': 'B', 'ChatID': 'chatid_jane', 'Type': 'Visitor'}
+2025-06-05 06:45:52,971 - root - INFO - Detected: STAFF05 on 192.168.1.108 at 2025-06-05 06:45:52.970640
+2025-06-05 06:45:53,972 - root - INFO - Detected: REGULAR1 on 192.168.1.106 at 2025-06-05 06:45:53.972572
+2025-06-05 06:45:53,972 - root - INFO - Detected: TEMP003 on 192.168.1.108 at 2025-06-05 06:45:53.972584
+2025-06-05 06:45:54,473 - root - INFO - Detected: XYZ7890 on 192.168.1.106 at 2025-06-05 06:45:54.473656
+2025-06-05 06:45:54,473 - root - INFO - VIP DETECTED: XYZ7890! Details: {'PlateNumber': 'XYZ7890', 'Name': 'Jane Smith', 'HouseNumber': '202', 'Lane': 'B', 'ChatID': 'chatid_jane', 'Type': 'Visitor'}
+2025-06-05 06:45:54,474 - root - INFO - Detected: TEMP003 on 192.168.1.107 at 2025-06-05 06:45:54.473668
+2025-06-05 06:45:54,974 - root - INFO - Application finished mock detection loop.
+2025-06-05 06:47:40,180 - root - INFO - Logging configured.
+2025-06-05 06:47:40,180 - root - INFO - Application starting...
+2025-06-05 06:47:40,180 - root - INFO - Camera IPs: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 06:47:40,180 - root - INFO - VIP List CSV Path: data/vip_list.csv
+2025-06-05 06:47:40,181 - root - INFO - Successfully loaded 5 records from data/vip_list.csv
+2025-06-05 06:47:40,181 - root - INFO - Initializing Telegram Notifier...
+2025-06-05 06:47:40,181 - root - WARNING - Telegram bot token is not configured or is a placeholder. Telegram notifications will be disabled.
+2025-06-05 06:47:40,181 - root - INFO - Starting mock detection loop for 20 iterations...
+2025-06-05 06:47:40,181 - root - INFO - Detected: BOSS01 on 192.168.1.106 at 2025-06-05 06:47:40
+2025-06-05 06:47:40,181 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:47:40,181 - root - INFO - Attempting to send notification to ChatID: chatid_boss for plate BOSS01
+2025-06-05 06:47:40,181 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Detected At:* `2025-06-05 06:47:40`
+*Camera:* `192.168.1.106`
+2025-06-05 06:47:40,181 - root - INFO - Detected: TEMP003 on 192.168.1.107 at 2025-06-05 06:47:40
+2025-06-05 06:47:40,181 - root - INFO - Detected: DEMO002 on 192.168.1.108 at 2025-06-05 06:47:40
+2025-06-05 06:47:40,682 - root - INFO - Detected: VISITOR99 on 192.168.1.106 at 2025-06-05 06:47:40
+2025-06-05 06:47:40,682 - root - INFO - Detected: ABC1234 on 192.168.1.108 at 2025-06-05 06:47:40
+2025-06-05 06:47:40,682 - root - INFO - VIP DETECTED: ABC1234! Details: {'PlateNumber': 'ABC1234', 'Name': 'John Doe', 'HouseNumber': '101', 'Lane': 'A', 'ChatID': 'chatid_john', 'Type': 'Resident'}
+2025-06-05 06:47:40,682 - root - INFO - Attempting to send notification to ChatID: chatid_john for plate ABC1234
+2025-06-05 06:47:40,682 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Detected At:* `2025-06-05 06:47:40`
+*Camera:* `192.168.1.108`
+2025-06-05 06:47:41,183 - root - INFO - Detected: TEMP003 on 192.168.1.106 at 2025-06-05 06:47:41
+2025-06-05 06:47:41,183 - root - INFO - Detected: STAFF05 on 192.168.1.108 at 2025-06-05 06:47:41
+2025-06-05 06:47:41,684 - root - INFO - Detected: DEMO002 on 192.168.1.106 at 2025-06-05 06:47:41
+2025-06-05 06:47:41,685 - root - INFO - Detected: DEMO002 on 192.168.1.107 at 2025-06-05 06:47:41
+2025-06-05 06:47:41,685 - root - INFO - Detected: XYZ7890 on 192.168.1.108 at 2025-06-05 06:47:41
+2025-06-05 06:47:41,685 - root - INFO - VIP DETECTED: XYZ7890! Details: {'PlateNumber': 'XYZ7890', 'Name': 'Jane Smith', 'HouseNumber': '202', 'Lane': 'B', 'ChatID': 'chatid_jane', 'Type': 'Visitor'}
+2025-06-05 06:47:41,685 - root - INFO - Attempting to send notification to ChatID: chatid_jane for plate XYZ7890
+2025-06-05 06:47:41,685 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Detected At:* `2025-06-05 06:47:41`
+*Camera:* `192.168.1.108`
+2025-06-05 06:47:42,186 - root - INFO - Detected: XYZ7890 on 192.168.1.106 at 2025-06-05 06:47:42
+2025-06-05 06:47:42,186 - root - INFO - VIP DETECTED: XYZ7890! Details: {'PlateNumber': 'XYZ7890', 'Name': 'Jane Smith', 'HouseNumber': '202', 'Lane': 'B', 'ChatID': 'chatid_jane', 'Type': 'Visitor'}
+2025-06-05 06:47:42,186 - root - INFO - Attempting to send notification to ChatID: chatid_jane for plate XYZ7890
+2025-06-05 06:47:42,186 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Detected At:* `2025-06-05 06:47:42`
+*Camera:* `192.168.1.106`
+2025-06-05 06:47:42,186 - root - INFO - Detected: VIP001 on 192.168.1.107 at 2025-06-05 06:47:42
+2025-06-05 06:47:42,186 - root - INFO - VIP DETECTED: VIP001! Details: {'PlateNumber': 'VIP001', 'Name': 'Mr. Important', 'HouseNumber': '1', 'Lane': 'Main Lane', 'ChatID': 'chatid_vip1', 'Type': 'VIP'}
+2025-06-05 06:47:42,186 - root - INFO - Attempting to send notification to ChatID: chatid_vip1 for plate VIP001
+2025-06-05 06:47:42,186 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_vip1: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `VIP001`
+*Name:* `Mr. Important`
+*House Number:* `1`
+*Lane:* `Main Lane`
+*Detected At:* `2025-06-05 06:47:42`
+*Camera:* `192.168.1.107`
+2025-06-05 06:47:42,687 - root - INFO - Detected: REGULAR1 on 192.168.1.106 at 2025-06-05 06:47:42
+2025-06-05 06:47:42,687 - root - INFO - Detected: VIP002 on 192.168.1.107 at 2025-06-05 06:47:42
+2025-06-05 06:47:42,687 - root - INFO - Detected: VIP001 on 192.168.1.108 at 2025-06-05 06:47:42
+2025-06-05 06:47:42,687 - root - INFO - VIP DETECTED: VIP001! Details: {'PlateNumber': 'VIP001', 'Name': 'Mr. Important', 'HouseNumber': '1', 'Lane': 'Main Lane', 'ChatID': 'chatid_vip1', 'Type': 'VIP'}
+2025-06-05 06:47:42,687 - root - INFO - Attempting to send notification to ChatID: chatid_vip1 for plate VIP001
+2025-06-05 06:47:42,687 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_vip1: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `VIP001`
+*Name:* `Mr. Important`
+*House Number:* `1`
+*Lane:* `Main Lane`
+*Detected At:* `2025-06-05 06:47:42`
+*Camera:* `192.168.1.108`
+2025-06-05 06:47:43,188 - root - INFO - Detected: STAFF05 on 192.168.1.106 at 2025-06-05 06:47:43
+2025-06-05 06:47:43,189 - root - INFO - Detected: TEST001 on 192.168.1.107 at 2025-06-05 06:47:43
+2025-06-05 06:47:43,689 - root - INFO - Detected: VIP007 on 192.168.1.106 at 2025-06-05 06:47:43
+2025-06-05 06:47:43,690 - root - INFO - Detected: REGULAR1 on 192.168.1.107 at 2025-06-05 06:47:43
+2025-06-05 06:47:43,690 - root - INFO - Detected: VIP007 on 192.168.1.108 at 2025-06-05 06:47:43
+2025-06-05 06:47:44,191 - root - INFO - Detected: VIP001 on 192.168.1.106 at 2025-06-05 06:47:44
+2025-06-05 06:47:44,191 - root - INFO - VIP DETECTED: VIP001! Details: {'PlateNumber': 'VIP001', 'Name': 'Mr. Important', 'HouseNumber': '1', 'Lane': 'Main Lane', 'ChatID': 'chatid_vip1', 'Type': 'VIP'}
+2025-06-05 06:47:44,191 - root - INFO - Attempting to send notification to ChatID: chatid_vip1 for plate VIP001
+2025-06-05 06:47:44,191 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_vip1: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `VIP001`
+*Name:* `Mr. Important`
+*House Number:* `1`
+*Lane:* `Main Lane`
+*Detected At:* `2025-06-05 06:47:44`
+*Camera:* `192.168.1.106`
+2025-06-05 06:47:44,191 - root - INFO - Detected: VIP002 on 192.168.1.108 at 2025-06-05 06:47:44
+2025-06-05 06:47:44,692 - root - INFO - Detected: VIP002 on 192.168.1.106 at 2025-06-05 06:47:44
+2025-06-05 06:47:44,692 - root - INFO - Detected: VISITOR99 on 192.168.1.107 at 2025-06-05 06:47:44
+2025-06-05 06:47:44,692 - root - INFO - Detected: LIC73NS on 192.168.1.108 at 2025-06-05 06:47:44
+2025-06-05 06:47:45,193 - root - INFO - Detected: TEST001 on 192.168.1.106 at 2025-06-05 06:47:45
+2025-06-05 06:47:45,193 - root - INFO - Detected: REGULAR1 on 192.168.1.108 at 2025-06-05 06:47:45
+2025-06-05 06:47:45,694 - root - INFO - Detected: STAFF05 on 192.168.1.107 at 2025-06-05 06:47:45
+2025-06-05 06:47:45,694 - root - INFO - Detected: VISITOR99 on 192.168.1.108 at 2025-06-05 06:47:45
+2025-06-05 06:47:46,195 - root - INFO - Detected: ABC1234 on 192.168.1.107 at 2025-06-05 06:47:46
+2025-06-05 06:47:46,196 - root - INFO - VIP DETECTED: ABC1234! Details: {'PlateNumber': 'ABC1234', 'Name': 'John Doe', 'HouseNumber': '101', 'Lane': 'A', 'ChatID': 'chatid_john', 'Type': 'Resident'}
+2025-06-05 06:47:46,196 - root - INFO - Attempting to send notification to ChatID: chatid_john for plate ABC1234
+2025-06-05 06:47:46,196 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Detected At:* `2025-06-05 06:47:46`
+*Camera:* `192.168.1.107`
+2025-06-05 06:47:46,196 - root - INFO - Detected: TEST001 on 192.168.1.108 at 2025-06-05 06:47:46
+2025-06-05 06:47:46,697 - root - INFO - Detected: ABC1234 on 192.168.1.106 at 2025-06-05 06:47:46
+2025-06-05 06:47:46,697 - root - INFO - VIP DETECTED: ABC1234! Details: {'PlateNumber': 'ABC1234', 'Name': 'John Doe', 'HouseNumber': '101', 'Lane': 'A', 'ChatID': 'chatid_john', 'Type': 'Resident'}
+2025-06-05 06:47:46,697 - root - INFO - Attempting to send notification to ChatID: chatid_john for plate ABC1234
+2025-06-05 06:47:46,697 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Detected At:* `2025-06-05 06:47:46`
+*Camera:* `192.168.1.106`
+2025-06-05 06:47:46,697 - root - INFO - Detected: XYZ7890 on 192.168.1.107 at 2025-06-05 06:47:46
+2025-06-05 06:47:46,697 - root - INFO - VIP DETECTED: XYZ7890! Details: {'PlateNumber': 'XYZ7890', 'Name': 'Jane Smith', 'HouseNumber': '202', 'Lane': 'B', 'ChatID': 'chatid_jane', 'Type': 'Visitor'}
+2025-06-05 06:47:46,697 - root - INFO - Attempting to send notification to ChatID: chatid_jane for plate XYZ7890
+2025-06-05 06:47:46,697 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Detected At:* `2025-06-05 06:47:46`
+*Camera:* `192.168.1.107`
+2025-06-05 06:47:46,697 - root - INFO - Detected: BOSS01 on 192.168.1.108 at 2025-06-05 06:47:46
+2025-06-05 06:47:46,698 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:47:46,698 - root - INFO - Attempting to send notification to ChatID: chatid_boss for plate BOSS01
+2025-06-05 06:47:46,698 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Detected At:* `2025-06-05 06:47:46`
+*Camera:* `192.168.1.108`
+2025-06-05 06:47:47,199 - root - INFO - Detected: LIC73NS on 192.168.1.106 at 2025-06-05 06:47:47
+2025-06-05 06:47:47,199 - root - INFO - Detected: BOSS01 on 192.168.1.107 at 2025-06-05 06:47:47
+2025-06-05 06:47:47,199 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:47:47,199 - root - INFO - Attempting to send notification to ChatID: chatid_boss for plate BOSS01
+2025-06-05 06:47:47,199 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Detected At:* `2025-06-05 06:47:47`
+*Camera:* `192.168.1.107`
+2025-06-05 06:47:47,199 - root - INFO - Detected: TEMP003 on 192.168.1.108 at 2025-06-05 06:47:47
+2025-06-05 06:47:47,701 - root - INFO - Detected: BOSS01 on 192.168.1.106 at 2025-06-05 06:47:47
+2025-06-05 06:47:47,701 - root - INFO - VIP DETECTED: BOSS01! Details: {'PlateNumber': 'BOSS01', 'Name': 'The Boss', 'HouseNumber': 'Penthouse', 'Lane': 'Top Lane', 'ChatID': 'chatid_boss', 'Type': 'Resident'}
+2025-06-05 06:47:47,701 - root - INFO - Attempting to send notification to ChatID: chatid_boss for plate BOSS01
+2025-06-05 06:47:47,701 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Detected At:* `2025-06-05 06:47:47`
+*Camera:* `192.168.1.106`
+2025-06-05 06:47:47,701 - root - INFO - Detected: VIP007 on 192.168.1.107 at 2025-06-05 06:47:47
+2025-06-05 06:47:48,202 - root - INFO - Detected: LIC73NS on 192.168.1.107 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,203 - root - INFO - Detected: DEMO002 on 192.168.1.108 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,706 - root - INFO - Detected: TEMP003 on 192.168.1.107 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,706 - root - INFO - Detected: ABC1234 on 192.168.1.108 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,706 - root - INFO - VIP DETECTED: ABC1234! Details: {'PlateNumber': 'ABC1234', 'Name': 'John Doe', 'HouseNumber': '101', 'Lane': 'A', 'ChatID': 'chatid_john', 'Type': 'Resident'}
+2025-06-05 06:47:48,706 - root - INFO - Attempting to send notification to ChatID: chatid_john for plate ABC1234
+2025-06-05 06:47:48,706 - root - WARNING - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Detected At:* `2025-06-05 06:47:48`
+*Camera:* `192.168.1.108`
+2025-06-05 06:47:49,208 - root - INFO - Detected: VISITOR99 on 192.168.1.106 at 2025-06-05 06:47:49
+2025-06-05 06:47:49,709 - root - INFO - Detected: DEMO002 on 192.168.1.107 at 2025-06-05 06:47:49
+2025-06-05 06:47:49,709 - root - INFO - Detected: STAFF05 on 192.168.1.108 at 2025-06-05 06:47:49
+2025-06-05 06:47:50,210 - root - INFO - Application finished mock detection loop.
+2025-06-05 06:47:43,050 - root - INFO - [main.setup_logging:28] - Logging configured.
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:122] - ===================================================
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:123] -       ANPR Notification Application Starting
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:124] - ===================================================
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:132] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:133] - VIP list CSV: data/vip_list.csv
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:135] - Telegram Bot Token is NOT SET or placeholder
+2025-06-05 06:47:43,050 - root - INFO - [main.<module>:138] - Initializing Camera Handler...
+2025-06-05 06:47:43,051 - root - INFO - [main.<module>:141] - Initializing VIP Manager...
+2025-06-05 06:47:43,051 - root - INFO - [vip_manager._load_vip_list:53] - Successfully loaded 5 records from data/vip_list.csv
+2025-06-05 06:47:43,051 - root - INFO - [main.<module>:146] - Initializing Telegram Notifier...
+2025-06-05 06:47:43,051 - root - WARNING - [telegram_notifier.__init__:20] - Telegram bot token is not configured or is a placeholder. Telegram notifications will be disabled.
+2025-06-05 06:47:43,051 - root - INFO - [main.run_main_loop:41] - Starting main detection loop. Camera poll interval: 5s.
+2025-06-05 06:47:43,051 - root - INFO - [main.run_main_loop:43] - Status log interval: 1 minutes.
+2025-06-05 06:47:43,051 - root - INFO - [main.run_main_loop:56] - Detected: STAFF05 on 192.168.1.106 at 2025-06-05 06:47:43
+2025-06-05 06:47:43,051 - root - INFO - [main.run_main_loop:56] - Detected: DEMO002 on 192.168.1.108 at 2025-06-05 06:47:43
+2025-06-05 06:47:48,057 - root - INFO - [main.run_main_loop:56] - Detected: BOSS01 on 192.168.1.106 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,057 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=BOSS01, Name=The Boss, Camera=192.168.1.106
+2025-06-05 06:47:48,058 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Type:* `Resident`
+*Detected At:* `2025-06-05 06:47:48`
+*Camera IP:* `192.168.1.106`
+2025-06-05 06:47:48,058 - root - INFO - [main.run_main_loop:81] - Notification sent for BOSS01 to chatid_boss.
+2025-06-05 06:47:48,058 - root - INFO - [main.run_main_loop:56] - Detected: VIP001 on 192.168.1.108 at 2025-06-05 06:47:48
+2025-06-05 06:47:48,058 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=VIP001, Name=Mr. Important, Camera=192.168.1.108
+2025-06-05 06:47:48,058 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_vip1: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `VIP001`
+*Name:* `Mr. Important`
+*House Number:* `1`
+*Lane:* `Main Lane`
+*Type:* `VIP`
+*Detected At:* `2025-06-05 06:47:48`
+*Camera IP:* `192.168.1.108`
+2025-06-05 06:47:48,058 - root - INFO - [main.run_main_loop:81] - Notification sent for VIP001 to chatid_vip1.
+2025-06-05 06:47:58,068 - root - INFO - [main.run_main_loop:56] - Detected: TEST001 on 192.168.1.107 at 2025-06-05 06:47:58
+2025-06-05 06:48:03,074 - root - INFO - [main.run_main_loop:56] - Detected: LIC73NS on 192.168.1.106 at 2025-06-05 06:48:03
+2025-06-05 06:48:03,074 - root - INFO - [main.run_main_loop:56] - Detected: VISITOR99 on 192.168.1.107 at 2025-06-05 06:48:03
+2025-06-05 06:48:08,080 - root - INFO - [main.run_main_loop:56] - Detected: VIP001 on 192.168.1.106 at 2025-06-05 06:48:08
+2025-06-05 06:48:08,080 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=VIP001, Name=Mr. Important, Camera=192.168.1.106
+2025-06-05 06:48:08,080 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_vip1: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `VIP001`
+*Name:* `Mr. Important`
+*House Number:* `1`
+*Lane:* `Main Lane`
+*Type:* `VIP`
+*Detected At:* `2025-06-05 06:48:08`
+*Camera IP:* `192.168.1.106`
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:81] - Notification sent for VIP001 to chatid_vip1.
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:56] - Detected: ABC1234 on 192.168.1.107 at 2025-06-05 06:48:08
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=ABC1234, Name=John Doe, Camera=192.168.1.107
+2025-06-05 06:48:08,082 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Type:* `Resident`
+*Detected At:* `2025-06-05 06:48:08`
+*Camera IP:* `192.168.1.107`
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:81] - Notification sent for ABC1234 to chatid_john.
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:56] - Detected: XYZ7890 on 192.168.1.108 at 2025-06-05 06:48:08
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=XYZ7890, Name=Jane Smith, Camera=192.168.1.108
+2025-06-05 06:48:08,082 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Type:* `Visitor`
+*Detected At:* `2025-06-05 06:48:08`
+*Camera IP:* `192.168.1.108`
+2025-06-05 06:48:08,082 - root - INFO - [main.run_main_loop:81] - Notification sent for XYZ7890 to chatid_jane.
+2025-06-05 06:48:13,088 - root - INFO - [main.run_main_loop:56] - Detected: VIP002 on 192.168.1.106 at 2025-06-05 06:48:13
+2025-06-05 06:48:13,088 - root - INFO - [main.run_main_loop:56] - Detected: VIP002 on 192.168.1.107 at 2025-06-05 06:48:13
+2025-06-05 06:48:13,089 - root - INFO - [main.run_main_loop:56] - Detected: VISITOR99 on 192.168.1.108 at 2025-06-05 06:48:13
+2025-06-05 06:48:18,094 - root - INFO - [main.run_main_loop:56] - Detected: VISITOR99 on 192.168.1.106 at 2025-06-05 06:48:18
+2025-06-05 06:48:18,095 - root - INFO - [main.run_main_loop:56] - Detected: TEMP003 on 192.168.1.108 at 2025-06-05 06:48:18
+2025-06-05 06:48:23,100 - root - INFO - [main.run_main_loop:56] - Detected: ABC1234 on 192.168.1.106 at 2025-06-05 06:48:23
+2025-06-05 06:48:23,101 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=ABC1234, Name=John Doe, Camera=192.168.1.106
+2025-06-05 06:48:23,101 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_john: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `ABC1234`
+*Name:* `John Doe`
+*House Number:* `101`
+*Lane:* `A`
+*Type:* `Resident`
+*Detected At:* `2025-06-05 06:48:23`
+*Camera IP:* `192.168.1.106`
+2025-06-05 06:48:23,101 - root - INFO - [main.run_main_loop:81] - Notification sent for ABC1234 to chatid_john.
+2025-06-05 06:48:28,106 - root - INFO - [main.run_main_loop:56] - Detected: XYZ7890 on 192.168.1.106 at 2025-06-05 06:48:28
+2025-06-05 06:48:28,107 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=XYZ7890, Name=Jane Smith, Camera=192.168.1.106
+2025-06-05 06:48:28,107 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Type:* `Visitor`
+*Detected At:* `2025-06-05 06:48:28`
+*Camera IP:* `192.168.1.106`
+2025-06-05 06:48:28,107 - root - INFO - [main.run_main_loop:81] - Notification sent for XYZ7890 to chatid_jane.
+2025-06-05 06:48:28,108 - root - INFO - [main.run_main_loop:56] - Detected: BOSS01 on 192.168.1.107 at 2025-06-05 06:48:28
+2025-06-05 06:48:28,108 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=BOSS01, Name=The Boss, Camera=192.168.1.107
+2025-06-05 06:48:28,108 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Type:* `Resident`
+*Detected At:* `2025-06-05 06:48:28`
+*Camera IP:* `192.168.1.107`
+2025-06-05 06:48:28,108 - root - INFO - [main.run_main_loop:81] - Notification sent for BOSS01 to chatid_boss.
+2025-06-05 06:48:28,108 - root - INFO - [main.run_main_loop:56] - Detected: VIP002 on 192.168.1.108 at 2025-06-05 06:48:28
+2025-06-05 06:48:33,114 - root - INFO - [main.run_main_loop:56] - Detected: VIP007 on 192.168.1.107 at 2025-06-05 06:48:33
+2025-06-05 06:48:33,114 - root - INFO - [main.run_main_loop:56] - Detected: BOSS01 on 192.168.1.108 at 2025-06-05 06:48:33
+2025-06-05 06:48:33,114 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=BOSS01, Name=The Boss, Camera=192.168.1.108
+2025-06-05 06:48:33,114 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_boss: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `BOSS01`
+*Name:* `The Boss`
+*House Number:* `Penthouse`
+*Lane:* `Top Lane`
+*Type:* `Resident`
+*Detected At:* `2025-06-05 06:48:33`
+*Camera IP:* `192.168.1.108`
+2025-06-05 06:48:33,114 - root - INFO - [main.run_main_loop:81] - Notification sent for BOSS01 to chatid_boss.
+2025-06-05 06:48:38,120 - root - INFO - [main.run_main_loop:56] - Detected: DEMO002 on 192.168.1.106 at 2025-06-05 06:48:38
+2025-06-05 06:48:38,120 - root - INFO - [main.run_main_loop:56] - Detected: XYZ7890 on 192.168.1.107 at 2025-06-05 06:48:38
+2025-06-05 06:48:38,120 - root - INFO - [main.run_main_loop:61] - VIP DETECTED: Plate=XYZ7890, Name=Jane Smith, Camera=192.168.1.107
+2025-06-05 06:48:38,121 - root - WARNING - [telegram_notifier.send_notification:30] - Telegram bot not initialized. Cannot send message to chatid_jane: *GRRA-Notification (Chemor, Perak)*
+
+Attention! VIP vehicle detected.
+
+*License Plate:* `XYZ7890`
+*Name:* `Jane Smith`
+*House Number:* `202`
+*Lane:* `B`
+*Type:* `Visitor`
+*Detected At:* `2025-06-05 06:48:38`
+*Camera IP:* `192.168.1.107`
+2025-06-05 06:48:38,121 - root - INFO - [main.run_main_loop:81] - Notification sent for XYZ7890 to chatid_jane.
+2025-06-05 06:48:38,121 - root - INFO - [main.run_main_loop:56] - Detected: REGULAR1 on 192.168.1.108 at 2025-06-05 06:48:38
+2025-06-05 06:48:43,126 - root - INFO - [main.run_main_loop:56] - Detected: REGULAR1 on 192.168.1.106 at 2025-06-05 06:48:43
+2025-06-05 06:48:43,126 - root - INFO - [main.run_main_loop:56] - Detected: LIC73NS on 192.168.1.107 at 2025-06-05 06:48:43
+2025-06-05 06:48:43,126 - root - INFO - [main.run_main_loop:56] - Detected: TEST001 on 192.168.1.108 at 2025-06-05 06:48:43
+2025-06-05 06:48:43,126 - root - INFO - [main.run_main_loop:94] - Application still running. Monitored cameras: 3. VIPs loaded: 5.
+2025-06-05 06:48:48,132 - root - INFO - [main.run_main_loop:56] - Detected: TEST001 on 192.168.1.106 at 2025-06-05 06:48:48
+2025-06-05 06:48:48,132 - root - INFO - [main.run_main_loop:56] - Detected: VIP007 on 192.168.1.108 at 2025-06-05 06:48:48
+2025-06-05 07:00:27,388 - root - INFO - [main.setup_logging:20] - Logging configured.
+2025-06-05 07:00:27,388 - root - INFO - [main.<module>:130] - ===================================================
+2025-06-05 07:00:27,388 - root - INFO - [main.<module>:131] -       ANPR Notification Application Starting
+2025-06-05 07:00:27,388 - root - INFO - [main.<module>:132] - ===================================================
+2025-06-05 07:00:27,388 - root - INFO - [main.<module>:139] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 07:00:27,388 - root - INFO - [main.<module>:140] - VIP list CSV: data/vip_list.csv
+2025-06-05 07:00:27,389 - root - INFO - [main.<module>:143] - Telegram Bot Token is SET
+2025-06-05 07:00:27,389 - root - INFO - [main.<module>:145] - Initializing VIP Manager...
+2025-06-05 07:00:27,389 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 07:00:27,389 - root - INFO - [main.<module>:150] - Initializing Telegram Notifier...
+2025-06-05 07:00:27,574 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 07:00:27,574 - root - INFO - [main.<module>:153] - Initializing Camera Handler...
+2025-06-05 07:00:27,575 - root - INFO - [main.run_main_loop:64] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 07:00:27,575 - root - INFO - [main.run_main_loop:66] - Status log interval: 1 minutes.
+2025-06-05 07:00:27,575 - CameraHandler - INFO - [camera_handler.start_monitoring:194] - Starting all camera monitoring threads...
+2025-06-05 07:00:27,576 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.106
+2025-06-05 07:00:27,576 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:00:27,576 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.107
+2025-06-05 07:00:27,577 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:00:27,577 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.108
+2025-06-05 07:00:27,578 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:00:27,578 - CameraHandler - INFO - [camera_handler.start_monitoring:196] - 3 camera threads started.
+2025-06-05 07:00:37,593 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25f10be0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:00:37,595 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25f135e0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:00:37,596 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25f137c0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:01:07,594 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:01:07,596 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:01:07,598 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:01:17,606 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25ef24d0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:01:17,610 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25ef2ef0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:01:17,611 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f7b25ef3130>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:01:27,607 - root - INFO - [main.run_main_loop:106] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 07:06:41,676 - root - INFO - [main.setup_logging:20] - Logging configured.
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:130] - ===================================================
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:131] -       ANPR Notification Application Starting
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:132] - ===================================================
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:139] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:140] - VIP list CSV: data/vip_list.csv
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:142] - Telegram Bot Token is SET
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:149] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:153] - Initializing VIP Manager...
+2025-06-05 07:06:41,677 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 07:06:41,677 - root - INFO - [main.<module>:158] - Initializing Telegram Notifier...
+2025-06-05 07:06:41,944 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 07:06:41,945 - root - INFO - [main.<module>:161] - Initializing Camera Handler...
+2025-06-05 07:06:41,945 - root - INFO - [main.run_main_loop:64] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 07:06:41,945 - root - INFO - [main.run_main_loop:66] - Status log interval: 1 minutes.
+2025-06-05 07:06:41,945 - CameraHandler - INFO - [camera_handler.start_monitoring:194] - Starting all camera monitoring threads...
+2025-06-05 07:06:41,946 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.106
+2025-06-05 07:06:41,946 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:06:41,947 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.107
+2025-06-05 07:06:41,947 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:06:41,948 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.108
+2025-06-05 07:06:41,948 - CameraHandler - INFO - [camera_handler.start_monitoring:196] - 3 camera threads started.
+2025-06-05 07:06:41,949 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:06:51,967 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde27f9d0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:06:51,967 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde27db10>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:06:51,968 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde27d690>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:07:21,967 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:07:21,969 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:07:21,971 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 07:07:31,984 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde27edd0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:07:31,984 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde27f2b0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:07:31,985 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fbcde1235b0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 07:07:41,970 - root - INFO - [main.run_main_loop:110] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 08:11:04,106 - root - INFO - [main.setup_logging:20] - Logging configured.
+2025-06-05 08:11:04,106 - root - INFO - [main.<module>:141] - ===================================================
+2025-06-05 08:11:04,106 - root - INFO - [main.<module>:142] -       ANPR Notification Application Starting
+2025-06-05 08:11:04,106 - root - INFO - [main.<module>:143] - ===================================================
+2025-06-05 08:11:04,106 - root - INFO - [main.<module>:150] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 08:11:04,107 - root - INFO - [main.<module>:151] - VIP list CSV: data/vip_list.csv
+2025-06-05 08:11:04,107 - root - INFO - [main.<module>:153] - Telegram Bot Token is SET
+2025-06-05 08:11:04,107 - root - INFO - [main.<module>:160] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 08:11:04,107 - root - INFO - [main.<module>:164] - Initializing VIP Manager...
+2025-06-05 08:11:04,107 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 08:11:04,107 - root - INFO - [main.<module>:169] - Initializing Telegram Notifier...
+2025-06-05 08:11:04,382 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 08:11:04,383 - root - INFO - [main.<module>:172] - Initializing Camera Handler...
+2025-06-05 08:11:04,383 - root - INFO - [main.run_main_loop:75] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 08:11:04,383 - root - INFO - [main.run_main_loop:77] - Status log interval: 1 minutes.
+2025-06-05 08:11:04,383 - CameraHandler - INFO - [camera_handler.start_monitoring:194] - Starting all camera monitoring threads...
+2025-06-05 08:11:04,384 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.106
+2025-06-05 08:11:04,385 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:04,385 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.107
+2025-06-05 08:11:04,386 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:04,386 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:49] - Starting connection thread for 192.168.1.108
+2025-06-05 08:11:04,386 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:04,387 - CameraHandler - INFO - [camera_handler.start_monitoring:196] - 3 camera threads started.
+2025-06-05 08:11:14,409 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e9c460>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:11:14,410 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e9b790>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:11:14,417 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e9a710>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:11:44,410 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:44,413 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:44,417 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:53] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:11:54,427 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e9b280>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:11:54,429 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e98280>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:11:54,430 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:169] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe4f6e98dc0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:12:04,421 - root - INFO - [main.run_main_loop:121] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 08:30:09,881 - root - INFO - [main.setup_logging:20] - Logging configured.
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:141] - ===================================================
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:142] -       ANPR Notification Application Starting
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:143] - ===================================================
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:150] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:151] - VIP list CSV: data/vip_list.csv
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:153] - Telegram Bot Token is SET
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:160] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 08:30:09,882 - root - INFO - [main.<module>:164] - Initializing VIP Manager...
+2025-06-05 08:30:09,882 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 08:30:09,883 - root - INFO - [main.<module>:169] - Initializing Telegram Notifier...
+2025-06-05 08:30:10,181 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 08:30:10,181 - root - INFO - [main.<module>:172] - Initializing Camera Handler...
+2025-06-05 08:30:10,182 - root - CRITICAL - [main.<module>:192] - An unexpected FATAL STARTUP ERROR occurred.
+Traceback (most recent call last):
+  File "/app/src/main.py", line 173, in <module>
+    cam_handler = CameraHandler(camera_ips, app_config=config)
+  File "/app/src/camera_handler.py", line 206, in __init__
+    self.connections.append(CameraConnection(ip, self.detection_queue, self.app_config))
+  File "/app/src/camera_handler.py", line 36, in __init__
+    if self.app_config and self.app_config.has_section('cameras'):
+AttributeError: 'CameraConnection' object has no attribute 'app_config'
+2025-06-05 08:30:10,184 - root - INFO - [main.<module>:197] - Application shutdown sequence complete.
+2025-06-05 08:30:50,632 - root - INFO - [main.setup_logging:20] - Logging configured.
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:141] - ===================================================
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:142] -       ANPR Notification Application Starting
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:143] - ===================================================
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:150] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:151] - VIP list CSV: data/vip_list.csv
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:153] - Telegram Bot Token is SET
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:160] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 08:30:50,632 - root - INFO - [main.<module>:164] - Initializing VIP Manager...
+2025-06-05 08:30:50,633 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 08:30:50,633 - root - INFO - [main.<module>:169] - Initializing Telegram Notifier...
+2025-06-05 08:30:50,903 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 08:30:50,903 - root - INFO - [main.<module>:172] - Initializing Camera Handler...
+2025-06-05 08:30:50,903 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 08:30:50,904 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 08:30:50,904 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 08:30:50,904 - root - INFO - [main.run_main_loop:75] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 08:30:50,904 - root - INFO - [main.run_main_loop:77] - Status log interval: 1 minutes.
+2025-06-05 08:30:50,904 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 08:30:50,905 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 08:30:50,905 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:30:50,909 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 08:30:50,909 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:30:50,910 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 08:30:50,911 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 08:30:50,912 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:31:00,921 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d2ac80>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:00,925 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d2bac0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:00,926 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d24fa0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:30,921 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:31:30,925 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:31:30,926 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 08:31:40,934 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d26110>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:40,939 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d2b370>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:40,940 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fee04d2a500>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 08:31:50,935 - root - INFO - [main.run_main_loop:121] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 09:37:28,286 - root - INFO - [main.setup_logging:22] - Logging configured.
+2025-06-05 09:37:28,286 - root - INFO - [main.<module>:184] - ===================================================
+2025-06-05 09:37:28,286 - root - INFO - [main.<module>:185] -       ANPR Notification Application Starting
+2025-06-05 09:37:28,286 - root - INFO - [main.<module>:186] - ===================================================
+2025-06-05 09:37:28,286 - root - INFO - [main.<module>:193] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 09:37:28,287 - root - INFO - [main.<module>:194] - VIP list CSV: data/vip_list.csv
+2025-06-05 09:37:28,287 - root - INFO - [main.<module>:196] - Telegram Bot Token is SET
+2025-06-05 09:37:28,287 - root - INFO - [main.<module>:203] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 09:37:28,287 - root - INFO - [main.<module>:207] - Initializing VIP Manager...
+2025-06-05 09:37:28,287 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 09:37:28,288 - root - INFO - [main.<module>:212] - Initializing Telegram Notifier...
+2025-06-05 09:37:28,591 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 09:37:28,591 - root - INFO - [main.<module>:215] - Initializing Camera Handler...
+2025-06-05 09:37:28,592 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:37:28,592 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:37:28,592 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:37:28,592 - root - INFO - [main.run_main_loop:82] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 09:37:28,592 - root - INFO - [main.run_main_loop:84] - Status log interval: 1 minutes.
+2025-06-05 09:37:28,592 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 09:37:28,593 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 09:37:28,594 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:37:28,594 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 09:37:28,597 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:37:28,599 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 09:37:28,599 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:37:28,600 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 09:37:33,603 - root - INFO - [main.run_main_loop:93] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-05 09:37:33,652 - root - INFO - [main.run_main_loop:104] - Created simulated JPEG image of 3751 bytes.
+2025-06-05 09:37:33,652 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3751, TS=2025-06-05 09:37:33.652858
+2025-06-05 09:37:33,652 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-05 09:37:33,653 - root - ERROR - [telegram_notifier.send_notification_with_image:109] - An unexpected error occurred while sending Telegram image to 814158826: module 'telegram' has no attribute 'ParseMode'
+Traceback (most recent call last):
+  File "/app/src/telegram_notifier.py", line 97, in send_notification_with_image
+    parse_mode=telegram.ParseMode.MARKDOWN,
+AttributeError: module 'telegram' has no attribute 'ParseMode'
+2025-06-05 09:37:33,658 - root - WARNING - [main.run_main_loop:149] - Failed to send notification with image for ANR9163 to 814158826.
+2025-06-05 09:37:38,612 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30ad058d0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:37:38,614 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30ad06170>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:37:38,614 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30ad054b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:38:08,613 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:38:08,616 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:38:08,617 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:38:18,629 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30b7662c0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:38:18,630 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30b765060>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:38:18,630 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fe30b766a10>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:38:28,677 - root - INFO - [main.run_main_loop:164] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 09:39:27,521 - root - INFO - [main.setup_logging:22] - Logging configured.
+2025-06-05 09:39:27,521 - root - INFO - [main.<module>:184] - ===================================================
+2025-06-05 09:39:27,521 - root - INFO - [main.<module>:185] -       ANPR Notification Application Starting
+2025-06-05 09:39:27,521 - root - INFO - [main.<module>:186] - ===================================================
+2025-06-05 09:39:27,521 - root - INFO - [main.<module>:193] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 09:39:27,521 - root - INFO - [main.<module>:194] - VIP list CSV: data/vip_list.csv
+2025-06-05 09:39:27,522 - root - INFO - [main.<module>:196] - Telegram Bot Token is SET
+2025-06-05 09:39:27,522 - root - INFO - [main.<module>:203] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 09:39:27,522 - root - INFO - [main.<module>:207] - Initializing VIP Manager...
+2025-06-05 09:39:27,522 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 09:39:27,522 - root - INFO - [main.<module>:212] - Initializing Telegram Notifier...
+2025-06-05 09:39:27,843 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 09:39:27,843 - root - INFO - [main.<module>:215] - Initializing Camera Handler...
+2025-06-05 09:39:27,843 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:39:27,843 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:39:27,844 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:39:27,844 - root - INFO - [main.run_main_loop:82] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 09:39:27,844 - root - INFO - [main.run_main_loop:84] - Status log interval: 1 minutes.
+2025-06-05 09:39:27,844 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 09:39:27,845 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 09:39:27,845 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:39:27,847 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 09:39:27,848 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:39:27,849 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 09:39:27,850 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:39:27,852 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 09:39:32,854 - root - INFO - [main.run_main_loop:93] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-05 09:39:32,884 - root - INFO - [main.run_main_loop:104] - Created simulated JPEG image of 3751 bytes.
+2025-06-05 09:39:32,884 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3751, TS=2025-06-05 09:39:32.884712
+2025-06-05 09:39:32,884 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-05 09:39:32,884 - root - ERROR - [telegram_notifier.send_notification_with_image:109] - An unexpected error occurred while sending Telegram image to 814158826: Bot.send_photo() got an unexpected keyword argument 'timeout'
+Traceback (most recent call last):
+  File "/app/src/telegram_notifier.py", line 93, in send_notification_with_image
+    self.bot.send_photo(
+TypeError: Bot.send_photo() got an unexpected keyword argument 'timeout'
+2025-06-05 09:39:32,885 - root - WARNING - [main.run_main_loop:149] - Failed to send notification with image for ANR9163 to 814158826.
+2025-06-05 09:39:37,863 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb23021d0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:39:37,864 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb23014b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:39:37,865 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb23018a0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:40:07,863 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:40:07,874 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:40:07,880 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:40:17,890 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb286d060>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:40:17,902 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb286e2c0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:40:17,907 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7efdb286ea10>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:40:27,924 - root - INFO - [main.run_main_loop:164] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 09:40:59,690 - root - INFO - [main.setup_logging:22] - Logging configured.
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:184] - ===================================================
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:185] -       ANPR Notification Application Starting
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:186] - ===================================================
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:193] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:194] - VIP list CSV: data/vip_list.csv
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:196] - Telegram Bot Token is SET
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:203] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:207] - Initializing VIP Manager...
+2025-06-05 09:40:59,690 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 09:40:59,690 - root - INFO - [main.<module>:212] - Initializing Telegram Notifier...
+2025-06-05 09:40:59,984 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 09:40:59,984 - root - INFO - [main.<module>:215] - Initializing Camera Handler...
+2025-06-05 09:40:59,985 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:40:59,985 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:40:59,985 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:40:59,985 - root - INFO - [main.run_main_loop:82] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 09:40:59,985 - root - INFO - [main.run_main_loop:84] - Status log interval: 1 minutes.
+2025-06-05 09:40:59,985 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 09:40:59,986 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 09:40:59,986 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:40:59,990 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 09:40:59,991 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:40:59,991 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 09:40:59,991 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 09:40:59,995 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:41:05,020 - root - INFO - [main.run_main_loop:93] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-05 09:41:05,061 - root - INFO - [main.run_main_loop:104] - Created simulated JPEG image of 3751 bytes.
+2025-06-05 09:41:05,061 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3751, TS=2025-06-05 09:41:05.061267
+2025-06-05 09:41:05,061 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-05 09:41:05,086 - root - INFO - [telegram_notifier.send_notification_with_image:100] - Successfully sent Telegram notification with image to 814158826.
+2025-06-05 09:41:05,086 - root - INFO - [main.run_main_loop:147] - Notification with image sent for ANR9163 to 814158826.
+2025-06-05 09:41:10,014 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd61a799f0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:41:10,016 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd61a7a200>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:41:10,045 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd61a794e0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:41:40,015 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:41:40,018 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:41:40,049 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:41:50,031 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd6199cfd0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:41:50,036 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd6199fcd0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:41:50,070 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fcd6199e4a0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:42:00,132 - root - INFO - [main.run_main_loop:164] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 09:42:39,597 - root - INFO - [main.setup_logging:22] - Logging configured.
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:186] - ===================================================
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:187] -       ANPR Notification Application Starting
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:188] - ===================================================
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:195] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:196] - VIP list CSV: data/vip_list.csv
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:198] - Telegram Bot Token is SET
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:205] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:209] - Initializing VIP Manager...
+2025-06-05 09:42:39,597 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 09:42:39,597 - root - INFO - [main.<module>:214] - Initializing Telegram Notifier...
+2025-06-05 09:42:39,801 - root - INFO - [telegram_notifier.__init__:21] - Telegram Bot initialized successfully with provided token.
+2025-06-05 09:42:39,801 - root - INFO - [main.<module>:217] - Initializing Camera Handler...
+2025-06-05 09:42:39,801 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:42:39,801 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:42:39,801 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 09:42:39,802 - root - INFO - [main.run_main_loop:82] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 09:42:39,802 - root - INFO - [main.run_main_loop:84] - Status log interval: 1 minutes.
+2025-06-05 09:42:39,802 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 09:42:39,802 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 09:42:39,802 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:42:39,804 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 09:42:39,805 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:42:39,806 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 09:42:39,806 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:42:39,807 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 09:42:49,820 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f674465c970>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:42:49,820 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6744663580>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:42:49,821 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6744660310>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:43:19,821 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:43:19,821 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:43:19,823 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 09:43:29,835 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f674465e590>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:43:29,837 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f674465f9a0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:43:29,838 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6744663580>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 09:43:39,831 - root - INFO - [main.run_main_loop:166] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 12:00:36,145 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:192] - ===================================================
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:193] -       ANPR Notification Application Starting
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:194] - ===================================================
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:201] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:202] - VIP list CSV: data/vip_list.csv
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:204] - Telegram Bot Token is SET
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:211] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:215] - Initializing VIP Manager...
+2025-06-05 12:00:36,146 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 12:00:36,146 - root - INFO - [main.<module>:220] - Initializing Telegram Notifier...
+2025-06-05 12:00:36,458 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 12:00:36,458 - root - INFO - [main.<module>:223] - Initializing Camera Handler...
+2025-06-05 12:00:36,458 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:00:36,458 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:00:36,458 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:00:36,459 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 12:00:36,459 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 12:00:36,459 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 12:00:36,459 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 12:00:36,460 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:00:36,463 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 12:00:36,463 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:00:36,466 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 12:00:36,466 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 12:00:36,467 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:00:41,471 - root - INFO - [main.run_main_loop:94] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-05 12:00:41,522 - root - INFO - [main.run_main_loop:105] - Created simulated JPEG image of 3743 bytes.
+2025-06-05 12:00:41,522 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3743, TS=2025-06-05 12:00:41.522310
+2025-06-05 12:00:41,522 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-05 12:00:42,711 - httpx - INFO - [_client._send_single_request:1740] - HTTP Request: POST https://api.telegram.org/bot7573502667:AAFDP0N6H9k_tjrSByKK1DRjivj9Z66Ono8/sendPhoto "HTTP/1.1 200 OK"
+2025-06-05 12:00:42,713 - root - INFO - [telegram_notifier.send_notification_with_image:112] - Successfully sent Telegram notification with image to 814158826. Message ID: 208
+2025-06-05 12:00:42,715 - root - INFO - [main.run_main_loop:155] - Notification with image (called via asyncio.run) sent for ANR9163 to 814158826.
+2025-06-05 12:00:46,479 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77da94ee0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:00:46,480 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77da96c50>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:00:46,481 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77da976a0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:01:16,480 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:01:16,485 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:01:16,489 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:01:26,500 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77c063370>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:01:26,502 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77c062770>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:01:26,502 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fd77c0623b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:01:36,738 - root - INFO - [main.run_main_loop:172] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 12:02:34,205 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:195] - ===================================================
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:196] -       ANPR Notification Application Starting
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:197] - ===================================================
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:204] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:205] - VIP list CSV: data/vip_list.csv
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:207] - Telegram Bot Token is SET
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:214] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:218] - Initializing VIP Manager...
+2025-06-05 12:02:34,206 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 12:02:34,206 - root - INFO - [main.<module>:223] - Initializing Telegram Notifier...
+2025-06-05 12:02:34,488 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 12:02:34,489 - root - INFO - [main.<module>:226] - Initializing Camera Handler...
+2025-06-05 12:02:34,489 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:02:34,489 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:02:34,489 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:02:34,489 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 12:02:34,489 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 12:02:34,489 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 12:02:34,490 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 12:02:34,491 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:02:34,493 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 12:02:34,494 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 12:02:34,495 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:02:34,495 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 12:02:34,496 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:02:44,506 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6eb00>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:02:44,510 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6cc10>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:02:44,511 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6d7b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:03:14,507 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:03:14,511 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:03:14,513 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:03:24,521 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6e6b0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:03:24,523 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6ce50>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:03:24,526 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f0266c6eb60>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:03:34,524 - root - INFO - [main.run_main_loop:175] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 12:12:48,650 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 12:12:48,650 - root - INFO - [main.<module>:192] - ===================================================
+2025-06-05 12:12:48,650 - root - INFO - [main.<module>:193] -       ANPR Notification Application Starting
+2025-06-05 12:12:48,650 - root - INFO - [main.<module>:194] - ===================================================
+2025-06-05 12:12:48,650 - root - INFO - [main.<module>:201] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 12:12:48,651 - root - INFO - [main.<module>:202] - VIP list CSV: data/vip_list.csv
+2025-06-05 12:12:48,651 - root - INFO - [main.<module>:204] - Telegram Bot Token is SET
+2025-06-05 12:12:48,651 - root - INFO - [main.<module>:211] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 12:12:48,651 - root - INFO - [main.<module>:215] - Initializing VIP Manager...
+2025-06-05 12:12:48,651 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 12:12:48,651 - root - INFO - [main.<module>:220] - Initializing Telegram Notifier...
+2025-06-05 12:12:48,985 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 12:12:48,985 - root - INFO - [main.<module>:223] - Initializing Camera Handler...
+2025-06-05 12:12:48,986 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:12:48,986 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:12:48,986 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:42] - Configured HTTP authentication for user: admin
+2025-06-05 12:12:48,986 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 12:12:48,986 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 12:12:48,986 - CameraHandler - INFO - [camera_handler.start_monitoring:206] - Starting all camera monitoring threads...
+2025-06-05 12:12:48,987 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.106
+2025-06-05 12:12:48,987 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:12:48,991 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.107
+2025-06-05 12:12:48,992 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:12:48,994 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:61] - Starting connection thread for 192.168.1.108
+2025-06-05 12:12:48,995 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:12:48,997 - CameraHandler - INFO - [camera_handler.start_monitoring:208] - 3 camera threads started.
+2025-06-05 12:12:53,999 - root - INFO - [main.run_main_loop:94] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-05 12:12:54,052 - root - INFO - [main.run_main_loop:105] - Created simulated JPEG image of 3745 bytes.
+2025-06-05 12:12:54,052 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3745, TS=2025-06-05 12:12:54.052187
+2025-06-05 12:12:54,052 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-05 12:12:55,205 - httpx - INFO - [_client._send_single_request:1740] - HTTP Request: POST https://api.telegram.org/bot7573502667:AAFDP0N6H9k_tjrSByKK1DRjivj9Z66Ono8/sendPhoto "HTTP/1.1 200 OK"
+2025-06-05 12:12:55,206 - root - INFO - [telegram_notifier.send_notification_with_image:112] - Successfully sent Telegram notification with image to 814158826. Message ID: 209
+2025-06-05 12:12:55,208 - root - INFO - [main.run_main_loop:155] - Notification with image (called via asyncio.run) sent for ANR9163 to 814158826.
+2025-06-05 12:12:59,005 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae2641ae90>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:12:59,009 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae26418b20>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:12:59,009 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae26419de0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:13:29,006 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:13:29,010 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:13:29,011 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:13:39,020 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae24377370>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:13:39,020 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae243763b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:13:39,025 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:181] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7fae24377400>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:13:49,230 - root - INFO - [main.run_main_loop:172] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 12:14:56,813 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:195] - ===================================================
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:196] -       ANPR Notification Application Starting
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:197] - ===================================================
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:204] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:205] - VIP list CSV: data/vip_list.csv
+2025-06-05 12:14:56,813 - root - INFO - [main.<module>:207] - Telegram Bot Token is SET
+2025-06-05 12:14:56,814 - root - INFO - [main.<module>:214] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 12:14:56,814 - root - INFO - [main.<module>:218] - Initializing VIP Manager...
+2025-06-05 12:14:56,814 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 12:14:56,814 - root - INFO - [main.<module>:223] - Initializing Telegram Notifier...
+2025-06-05 12:14:57,152 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 12:14:57,152 - root - INFO - [main.<module>:226] - Initializing Camera Handler...
+2025-06-05 12:14:57,152 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:43] - Configured HTTP Digest Authentication for user: admin
+2025-06-05 12:14:57,153 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:43] - Configured HTTP Digest Authentication for user: admin
+2025-06-05 12:14:57,153 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:43] - Configured HTTP Digest Authentication for user: admin
+2025-06-05 12:14:57,153 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 12:14:57,153 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 12:14:57,153 - CameraHandler - INFO - [camera_handler.start_monitoring:207] - Starting all camera monitoring threads...
+2025-06-05 12:14:57,154 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.106
+2025-06-05 12:14:57,154 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:14:57,158 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.107
+2025-06-05 12:14:57,158 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:14:57,161 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.108
+2025-06-05 12:14:57,161 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:14:57,164 - CameraHandler - INFO - [camera_handler.start_monitoring:209] - 3 camera threads started.
+2025-06-05 12:15:07,171 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5caa10>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:15:07,177 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5c9c00>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:15:07,178 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5c9db0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:15:37,172 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:15:37,178 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:15:37,180 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:66] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 12:15:47,187 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5ca9e0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:15:47,188 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5c8f40>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:15:47,194 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:182] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f16ea5ca650>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 12:56:45,975 - root - INFO - [main.run_main_loop:175] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 13:43:20,741 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:195] - ===================================================
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:196] -       ANPR Notification Application Starting
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:197] - ===================================================
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:204] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:205] - VIP list CSV: data/vip_list.csv
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:207] - Telegram Bot Token is SET
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:214] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 13:43:20,741 - root - INFO - [main.<module>:218] - Initializing VIP Manager...
+2025-06-05 13:43:20,742 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 13:43:20,742 - root - INFO - [main.<module>:223] - Initializing Telegram Notifier...
+2025-06-05 13:43:21,058 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 13:43:21,058 - root - INFO - [main.<module>:226] - Initializing Camera Handler...
+2025-06-05 13:43:21,059 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:46] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:43:21,059 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:46] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:43:21,059 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:46] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:43:21,059 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 13:43:21,059 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 13:43:21,059 - CameraHandler - INFO - [camera_handler.start_monitoring:223] - Starting all camera monitoring threads...
+2025-06-05 13:43:21,060 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:65] - Starting connection thread for 192.168.1.106
+2025-06-05 13:43:21,061 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:43:21,063 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:65] - Starting connection thread for 192.168.1.107
+2025-06-05 13:43:21,064 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:43:21,067 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:65] - Starting connection thread for 192.168.1.108
+2025-06-05 13:43:21,067 - CameraHandler - INFO - [camera_handler.start_monitoring:225] - 3 camera threads started.
+2025-06-05 13:43:21,067 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:43:31,078 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29afa9b0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:43:31,080 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29af9390>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:43:31,081 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29afb2b0>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:44:01,078 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:44:01,081 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:44:01,083 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:69] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi with params {'action': 'attachFileProc', 'channel': 1, 'heartbeat': 15, 'Flags[0]': 'Event', 'Events': '[TrafficJunction]'}
+2025-06-05 13:44:11,092 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29afaf80>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:44:11,095 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29af9480>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:44:11,096 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:198] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f6b29af9f90>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:44:21,102 - root - INFO - [main.run_main_loop:175] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 13:51:58,828 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:195] - ===================================================
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:196] -       ANPR Notification Application Starting
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:197] - ===================================================
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:204] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:205] - VIP list CSV: data/vip_list.csv
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:207] - Telegram Bot Token is SET
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:214] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-05 13:51:58,829 - root - INFO - [main.<module>:218] - Initializing VIP Manager...
+2025-06-05 13:51:58,830 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-05 13:51:58,830 - root - INFO - [main.<module>:223] - Initializing Telegram Notifier...
+2025-06-05 13:51:59,138 - root - INFO - [telegram_notifier.__init__:32] - Telegram Bot object initialized successfully.
+2025-06-05 13:51:59,139 - root - INFO - [main.<module>:226] - Initializing Camera Handler...
+2025-06-05 13:51:59,139 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:43] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:51:59,139 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:43] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:51:59,139 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:43] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-05 13:51:59,140 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-05 13:51:59,140 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-05 13:51:59,140 - CameraHandler - INFO - [camera_handler.start_monitoring:224] - Starting all camera monitoring threads...
+2025-06-05 13:51:59,140 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.106
+2025-06-05 13:51:59,141 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:51:59,144 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.107
+2025-06-05 13:51:59,144 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:51:59,147 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.108
+2025-06-05 13:51:59,147 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:51:59,149 - CameraHandler - INFO - [camera_handler.start_monitoring:226] - 3 camera threads started.
+2025-06-05 13:52:02,259 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f97e92af2b0>: Failed to establish a new connection: [Errno 113] No route to host')). Retrying in 30s.
+2025-06-05 13:52:09,160 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f97e92ae1a0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:52:09,160 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f97e92ae980>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:52:32,259 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:52:35,346 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f97e92aef80>: Failed to establish a new connection: [Errno 113] No route to host')). Retrying in 30s.
+2025-06-05 13:52:39,161 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.107/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:52:39,162 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.106/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-05 13:52:49,175 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f97e92ac1c0>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:52:49,175 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:199] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f97e92ada50>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')). Retrying in 30s.
+2025-06-05 13:52:59,172 - root - INFO - [main.run_main_loop:175] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
+2025-06-05 13:53:05,347 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:70] - Attempting to connect to http://192.168.1.108/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:50:34,622 - root - INFO - [main.setup_logging:23] - Logging configured.
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:187] - ===================================================
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:188] -       ANPR Notification Application Starting
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:189] - ===================================================
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:196] - Camera IPs to monitor: ['192.168.1.106', '192.168.1.107', '192.168.1.108']
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:197] - VIP list CSV: data/vip_list.csv
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:199] - Telegram Bot Token is SET
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:206] - Loaded camera directions: {'192.168.1.106': 'IN', '192.168.1.107': 'IN', '192.168.1.108': 'OUT'}
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:210] - Initializing VIP Manager...
+2025-06-06 00:50:34,623 - root - INFO - [vip_manager._load_vip_list:41] - Successfully loaded 6 records from data/vip_list.csv
+2025-06-06 00:50:34,623 - root - INFO - [main.<module>:215] - Initializing Telegram Notifier...
+2025-06-06 00:50:34,893 - root - INFO - [telegram_notifier.__init__:25] - Telegram Bot object initialized successfully with known token.
+2025-06-06 00:50:34,894 - root - INFO - [main.<module>:218] - Initializing Camera Handler...
+2025-06-06 00:50:34,894 - CameraConnection.192.168.1.106 - INFO - [camera_handler.__init__:44] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-06 00:50:34,894 - CameraConnection.192.168.1.107 - INFO - [camera_handler.__init__:44] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-06 00:50:34,894 - CameraConnection.192.168.1.108 - INFO - [camera_handler.__init__:44] - Credentials loaded for user: admin. Will use HTTPDigestAuth per request.
+2025-06-06 00:50:34,894 - root - INFO - [main.run_main_loop:83] - Starting main processing loop. Detection fetch interval: 1.0s.
+2025-06-06 00:50:34,894 - root - INFO - [main.run_main_loop:85] - Status log interval: 1 minutes.
+2025-06-06 00:50:34,894 - CameraHandler - INFO - [camera_handler.start_monitoring:229] - Starting all camera monitoring threads...
+2025-06-06 00:50:34,895 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.106
+2025-06-06 00:50:34,895 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.106/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:50:34,898 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.107
+2025-06-06 00:50:34,898 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.107/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:50:34,901 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:62] - Starting connection thread for 192.168.1.108
+2025-06-06 00:50:34,901 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.108/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:50:34,902 - CameraHandler - INFO - [camera_handler.start_monitoring:232] - 3 camera threads started.
+2025-06-06 00:50:39,905 - root - INFO - [main.run_main_loop:94] - --- !!! TRIGGERING SIMULATED DETECTION EVENT !!! ---
+2025-06-06 00:50:39,934 - root - INFO - [main.run_main_loop:105] - Created simulated JPEG image of 3752 bytes.
+2025-06-06 00:50:39,934 - root - INFO - [main.run_main_loop:127] - Processing: Plate=ANR9163, Cam=192.168.1.106, ImgSize=3752, TS=2025-06-06 00:50:39.934460
+2025-06-06 00:50:39,934 - root - INFO - [main.run_main_loop:131] - VIP DETECTED: Plate=ANR9163, Name=OKChi, Type=Residence
+2025-06-06 00:50:41,045 - httpx - INFO - [_client._send_single_request:1740] - HTTP Request: POST https://api.telegram.org/bot7573502667:AAFDP0N6H9k_tjrSByKK1DRjivj9Z66Ono8/sendPhoto "HTTP/1.1 200 OK"
+2025-06-06 00:50:41,046 - root - INFO - [telegram_notifier._async_send_notification_with_image:80] - Successfully sent Telegram notification with image to 814158826. Message ID: 225
+2025-06-06 00:50:41,047 - root - INFO - [main.run_main_loop:150] - Notification with image sent for ANR9163 to 814158826.
+2025-06-06 00:50:44,913 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b5232590>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')).
+2025-06-06 00:50:44,914 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b5231c30>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')).
+2025-06-06 00:50:44,915 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b5231720>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')).
+2025-06-06 00:51:14,913 - CameraConnection.192.168.1.106 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.106/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:51:14,915 - CameraConnection.192.168.1.107 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.107/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:51:14,916 - CameraConnection.192.168.1.108 - INFO - [camera_handler.run:72] - Attempting to connect to (manually built URL): http://192.168.1.108/cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D
+2025-06-06 00:51:24,930 - CameraConnection.192.168.1.107 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.107: HTTPConnectionPool(host='192.168.1.107', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b40bfb20>, 'Connection to 192.168.1.107 timed out. (connect timeout=10)')).
+2025-06-06 00:51:24,931 - CameraConnection.192.168.1.106 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.106: HTTPConnectionPool(host='192.168.1.106', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b40be4a0>, 'Connection to 192.168.1.106 timed out. (connect timeout=10)')).
+2025-06-06 00:51:24,932 - CameraConnection.192.168.1.108 - ERROR - [camera_handler.run:204] - RequestException for 192.168.1.108: HTTPConnectionPool(host='192.168.1.108', port=80): Max retries exceeded with url: /cgi-bin/snapManager.cgi?action=attachFileProc&channel=1&heartbeat=15&Flags%5B0%5D=Event&Events=%5BTrafficJunction%5D (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7f14b5231a80>, 'Connection to 192.168.1.108 timed out. (connect timeout=10)')).
+2025-06-06 00:51:35,067 - root - INFO - [main.run_main_loop:167] - Application still running. Active camera connections: 3/3. VIPs loaded: 6.
