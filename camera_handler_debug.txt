@@ -1,0 +1,386 @@
+import logging
+import requests
+from requests.auth import HTTPDigestAuth
+from requests.exceptions import RequestException
+import threading
+import time
+from queue import Queue, Empty
+from datetime import datetime
+
+# Define a simple data structure for detections
+class DetectionEvent:
+    def __init__(self, plate_number, timestamp, camera_ip, image_data, event_details=None):
+        self.plate_number = plate_number
+        self.timestamp = timestamp # Should be datetime object
+        self.camera_ip = camera_ip
+        self.image_data = image_data # Bytes
+        self.event_details = event_details if event_details else {}
+
+    def __repr__(self):
+        return (f"DetectionEvent(plate='{self.plate_number}', ts='{self.timestamp}', "
+                f"cam='{self.camera_ip}', img_size='{len(self.image_data) if self.image_data else 0}')")
+
+class CameraConnection(threading.Thread):
+    def __init__(self, camera_ip, event_queue, config=None): # Pass full app config
+        super().__init__(daemon=True)
+        self.camera_ip = camera_ip
+        self.event_queue = event_queue
+        self.config = config # This is the main ConfigParser object from main.py
+        self.stop_event = threading.Event()
+        self.logger = logging.getLogger(f"CameraConnection.{self.camera_ip}")
+
+        self.cgi_path = "/cgi-bin/snapManager.cgi"
+
+        self.cam_username = None
+        self.cam_password = None
+        if self.config and self.config.has_section('cameras'):
+            retrieved_username = self.config.get('cameras', 'username', fallback=None)
+            retrieved_password = self.config.get('cameras', 'password', fallback=None)
+
+            if retrieved_username and retrieved_password:
+                self.cam_username = retrieved_username
+                self.cam_password = retrieved_password
+                self.logger.info(f"Credentials loaded for user '{self.cam_username}'. HTTPDigestAuth will be used per request.")
+            else:
+                self.logger.info("Camera username/password not found in config. HTTP auth will not be used.")
+        else:
+            self.logger.info("No [cameras] section in config or no config provided. HTTP auth will not be used.")
+
+        # Load gate alarm channel index
+        self.gate_alarm_channel_index = -1 # Default to invalid/not configured
+        if self.config and self.config.has_section('camera_gate_alarm_channels'):
+            try:
+                channel_str = self.config.get('camera_gate_alarm_channels', self.camera_ip, fallback=None)
+                if channel_str is not None:
+                    self.gate_alarm_channel_index = int(channel_str)
+                    self.logger.info(f"Gate alarm output channel index for {self.camera_ip} configured to: {self.gate_alarm_channel_index}")
+                else:
+                    self.logger.warning(f"No gate alarm channel index configured for {self.camera_ip} in [camera_gate_alarm_channels]. Gate check might not work as expected.")
+            except ValueError:
+                self.logger.error(f"Invalid gate alarm channel index for {self.camera_ip}: '{channel_str if 'channel_str' in locals() else 'value not found'}'. Must be an integer.")
+                self.gate_alarm_channel_index = -1
+            except Exception as e_conf:
+                self.logger.error(f"Error reading gate_alarm_channel_index for {self.camera_ip}: {e_conf}")
+                self.gate_alarm_channel_index = -1
+        else:
+            self.logger.warning("[camera_gate_alarm_channels] section not found in config. Gate check will use default (inactive).")
+
+    def _parse_event_text_part(self, text_part_content):
+        details = {}
+        try:
+            for line in text_part_content.splitlines():
+                if '=' in line:
+                    key, value = line.split('=', 1)
+                    details[key.strip()] = value.strip()
+        except Exception as e:
+            self.logger.error(f"Error parsing event text part: {e}. Content: '{text_part_content[:200]}'")
+        return details
+
+    def run(self):
+        self.logger.info(f"Starting connection thread for {self.camera_ip}")
+        while not self.stop_event.is_set():
+            try:
+                base_url = f"http://{self.camera_ip}{self.cgi_path}"
+                query_string = "action=attachFileProc&channel=1&heartbeat=15&Flags[0]=Event&Events=%5BTrafficJunction%5D"
+                full_url = f"{base_url}?{query_string}"
+
+                self.logger.info(f"Attempting to connect to (manually built URL): {full_url}")
+
+                auth_object = None
+                if self.cam_username and self.cam_password:
+                    auth_object = HTTPDigestAuth(self.cam_username, self.cam_password)
+                    self.logger.debug("HTTPDigestAuth object created for this request.")
+
+                with requests.get(full_url,
+                                  auth=auth_object,
+                                  params=None,
+                                  stream=True,
+                                  timeout=(10, 30)) as resp:
+                    resp.raise_for_status()
+                    self.logger.info(f"Successfully connected to {self.camera_ip} (status {resp.status_code}). Streaming events...")
+
+                    content_type_header = resp.headers.get('Content-Type', '')
+                    boundary = None
+                    if 'boundary=' in content_type_header:
+                        boundary = content_type_header.split('boundary=')[1].strip().encode('utf-8')
+
+                    if not boundary:
+                        self.logger.error("No boundary string found in Content-Type header. Cannot parse multipart stream.")
+                        self.stop_event.wait(30)
+                        continue
+
+                    buffer = b''
+                    expected_boundary_line = b'--' + boundary
+                    current_event_data = None
+
+                    for chunk in resp.iter_content(chunk_size=4096):
+                        if self.stop_event.is_set():
+                            break
+                        buffer += chunk
+
+                        while True:
+                            start_boundary_pos = buffer.find(expected_boundary_line)
+                            if start_boundary_pos == -1:
+                                if len(buffer) > 2 * len(expected_boundary_line) and self.logger.isEnabledFor(logging.DEBUG):
+                                     self.logger.debug(f"Waiting for more data. Buffer does not contain full boundary. Buffer head: {buffer[:100]}")
+                                break
+
+                            if buffer.startswith(expected_boundary_line + b'--'):
+                                self.logger.info("End of multipart stream detected by final boundary marker.")
+                                buffer = b''
+                                current_event_data = None
+                                break
+
+                            header_start_offset = start_boundary_pos + len(expected_boundary_line) + len(b'\r\n')
+
+                            end_of_headers_pos = buffer.find(b'\r\n\r\n', header_start_offset)
+                            if end_of_headers_pos == -1:
+                                if self.logger.isEnabledFor(logging.DEBUG):
+                                    self.logger.debug(f"Waiting for more data. Buffer does not contain full headers. Buffer from boundary: {buffer[start_boundary_pos:start_boundary_pos+200]}")
+                                break
+
+                            header_section_bytes = buffer[header_start_offset:end_of_headers_pos]
+                            headers_str = header_section_bytes.decode('utf-8', errors='ignore')
+
+                            part_content_type = None
+                            part_content_length = None
+                            for header_line in headers_str.split('\r\n'):
+                                if header_line.lower().startswith('content-type:'):
+                                    part_content_type = header_line.split(':', 1)[1].strip()
+                                elif header_line.lower().startswith('content-length:'):
+                                    try:
+                                        part_content_length = int(header_line.split(':', 1)[1].strip())
+                                    except ValueError:
+                                        self.logger.warning(f"Could not parse Content-Length: {header_line.split(':', 1)[1].strip()}")
+                                        part_content_length = None
+
+                            body_start_offset = end_of_headers_pos + len(b'\r\n\r\n')
+                            next_boundary_pos = buffer.find(expected_boundary_line, body_start_offset)
+
+                            if next_boundary_pos == -1:
+                                if part_content_length is not None:
+                                    if len(buffer) >= body_start_offset + part_content_length:
+                                        part_body = buffer[body_start_offset : body_start_offset + part_content_length]
+                                        buffer = buffer[body_start_offset + part_content_length:]
+                                    else:
+                                        if self.logger.isEnabledFor(logging.DEBUG):
+                                            self.logger.debug(f"Waiting for more data. Body incomplete based on Content-Length. Have {len(buffer)-body_start_offset}, need {part_content_length}")
+                                        break
+                                else:
+                                    if self.logger.isEnabledFor(logging.DEBUG):
+                                        self.logger.debug(f"Waiting for more data (no C-L). Next boundary not found. Buffer from body start: {buffer[body_start_offset:body_start_offset+200]}")
+                                    break
+                            else:
+                                part_body = buffer[body_start_offset:next_boundary_pos]
+                                buffer = buffer[next_boundary_pos:]
+
+                            if part_content_type == 'text/plain':
+                                text_content = part_body.decode('utf-8', errors='ignore').strip()
+                                if "Heartbeat" in text_content:
+                                    self.logger.debug(f"Received heartbeat from {self.camera_ip}")
+                                    current_event_data = None
+                                else:
+                                    parsed_text_event = self._parse_event_text_part(text_content)
+                                    self.logger.debug(f"Parsed text event: {parsed_text_event}")
+                                    if parsed_text_event.get("Events[0].EventBaseInfo.Code") == "TrafficJunction":
+                                        current_event_data = parsed_text_event
+                                    else:
+                                        self.logger.debug(f"Received non-TrafficJunction text event: {parsed_text_event.get('Events[0].EventBaseInfo.Code')}")
+                                        current_event_data = None
+                            elif part_content_type == 'image/jpeg':
+                                if current_event_data:
+                                    plate_number = current_event_data.get("Events[0].TrafficCar.PlateNumber", "UNKNOWN_PLATE")
+                                    self.logger.info(f"Received image data ({len(part_body)} bytes) for event: {plate_number}")
+
+                                    event_time = datetime.now() # ALWAYS USE CURRENT SYSTEM TIME
+                                    self.logger.info(f"Using current system time for event: {event_time.strftime('%Y-%m-%d %H:%M:%S.%f')}")
+
+                                    detection = DetectionEvent(
+                                        plate_number=plate_number,
+                                        timestamp=event_time, # Use current time
+                                        camera_ip=self.camera_ip,
+                                        image_data=part_body,
+                                        event_details=current_event_data
+                                    )
+                                    self.event_queue.put(detection)
+                                    current_event_data = None
+                                else:
+                                    self.logger.warning("Received image data but no preceding 'TrafficJunction' event data. Discarding.")
+                            else:
+                                self.logger.debug(f"Skipping part with unhandled Content-Type: {part_content_type}")
+                                current_event_data = None
+
+                        if buffer.startswith(expected_boundary_line + b'--'):
+                            self.logger.info("End of multipart stream detected by final boundary after part processing.")
+                            break
+
+                    if self.stop_event.is_set():
+                        self.logger.info("Stop event set, exiting connection loop.")
+                        break
+                    self.logger.info(f"Stream ended from {self.camera_ip}. Will attempt to reconnect if not stopping.")
+
+            except RequestException as e:
+                self.logger.error(f"RequestException for {self.camera_ip}: {e}.")
+                self.stop_event.wait(30)
+            except Exception as e:
+                self.logger.critical(f"Unhandled exception in connection thread for {self.camera_ip}: {e}", exc_info=True)
+                self.stop_event.wait(60)
+
+        self.logger.info(f"Connection thread for {self.camera_ip} fully stopped.")
+
+    def stop(self):
+        self.logger.info(f"Stopping connection thread for {self.camera_ip}")
+        self.stop_event.set()
+
+    def is_gate_alarm_active(self) -> bool:
+        if self.gate_alarm_channel_index < 0:
+            self.logger.debug(f"Gate alarm check skipped for {self.camera_ip}: channel index not configured or invalid ({self.gate_alarm_channel_index}).")
+            return False
+
+        alarm_state_url = f"http://{self.camera_ip}/cgi-bin/alarm.cgi?action=getOutState"
+        self.logger.debug(f"Checking gate alarm state for {self.camera_ip} at {alarm_state_url} for configured channel index {self.gate_alarm_channel_index}")
+
+        auth_object = None
+        if self.cam_username and self.cam_password:
+            auth_object = HTTPDigestAuth(self.cam_username, self.cam_password)
+
+        try:
+            with requests.get(alarm_state_url, auth=auth_object, timeout=5) as resp:
+                resp.raise_for_status()
+                content = resp.text.strip()
+                self.logger.debug(f"Raw response from getOutState for {self.camera_ip}: '{content}'")
+
+                if content.startswith("result="):
+                    try:
+                        value_str = content.split('=')[1]
+                        alarm_state_value = int(value_str)
+                        self.logger.debug(f"Parsed alarm_state_value: {alarm_state_value}")
+                        mask = (1 << self.gate_alarm_channel_index)
+                        self.logger.debug(f"Checking bit for channel {self.gate_alarm_channel_index} using mask {mask} (binary {bin(mask)}). Test: ({alarm_state_value} & {mask}) != 0")
+
+                        if (alarm_state_value & mask) != 0:
+                            self.logger.info(f"Gate alarm channel {self.gate_alarm_channel_index} is ACTIVE for {self.camera_ip} (value: {alarm_state_value})")
+                            return True
+                        else:
+                            self.logger.info(f"Gate alarm channel {self.gate_alarm_channel_index} is INACTIVE for {self.camera_ip} (value: {alarm_state_value})")
+                            return False
+                    except (IndexError, ValueError) as e_parse:
+                        self.logger.error(f"Error parsing getOutState response for {self.camera_ip}: '{content}'. Error: {e_parse}")
+                        return False
+                else:
+                    self.logger.error(f"Unexpected response format from getOutState for {self.camera_ip}: '{content}'")
+                    return False
+
+        except RequestException as e:
+            self.logger.error(f"RequestException while checking alarm state for {self.camera_ip}: {e}")
+            return False
+        except Exception as e_gen:
+            self.logger.error(f"Generic exception while checking alarm state for {self.camera_ip}: {e_gen}", exc_info=True)
+            return False
+
+class CameraHandler:
+    def __init__(self, camera_ips, app_config=None):
+        self.camera_ips = camera_ips
+        self.app_config = app_config
+        self.detection_queue = Queue()
+        self.connections = []
+        self.logger = logging.getLogger("CameraHandler")
+
+        for ip in self.camera_ips:
+            conn = CameraConnection(ip, self.detection_queue, self.app_config)
+            self.connections.append(conn)
+
+    def start_monitoring(self):
+        self.logger.info("Starting all camera monitoring threads...")
+        for conn in self.connections:
+            conn.start()
+        self.logger.info(f"{len(self.connections)} camera threads started.")
+
+    def stop_monitoring(self):
+        self.logger.info("Stopping all camera monitoring threads...")
+        for conn in self.connections:
+            conn.stop()
+        for conn in self.connections:
+            conn.join(timeout=10)
+            if conn.is_alive():
+                self.logger.warning(f"Thread for {conn.camera_ip} did not terminate in time.")
+        self.logger.info("All camera threads stopped.")
+
+    def check_gate_alarm_for_ip(self, target_ip: str) -> bool:
+        for conn in self.connections:
+            if conn.camera_ip == target_ip:
+                if conn.is_alive():
+                    return conn.is_gate_alarm_active()
+                else:
+                    self.logger.warning(f"Attempted to check gate alarm for non-running camera thread: {target_ip}")
+                    return False
+
+        self.logger.warning(f"No active CameraConnection found for IP {target_ip} to check gate alarm state.")
+        return False
+
+    def get_new_detections(self, max_items=10, timeout=0.1):
+        detections = []
+        try:
+            detections.append(self.detection_queue.get(block=True, timeout=timeout))
+            for _ in range(max_items - 1):
+                try: detections.append(self.detection_queue.get(block=False))
+                except Empty: break
+        except Empty: pass
+        return detections
+
+if __name__ == '__main__':
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s',
+                        handlers=[logging.StreamHandler()])
+    logger = logging.getLogger(__name__)
+
+    class MockConfig:
+        def __init__(self):
+            self.sections_data = {
+                'cameras': {
+                    'username': 'admin',
+                    'password': '123OKChi@'
+                },
+                'camera_gate_alarm_channels': { # Added for testing is_gate_alarm_active
+                    '192.168.1.106': '0'
+                }
+            }
+        def has_section(self, section):
+            return section in self.sections_data
+
+        def get(self, section, key, fallback=None):
+            return self.sections_data.get(section, {}).get(key, fallback)
+
+        def items(self, section):
+            return self.sections_data.get(section, {}).items()
+
+    mock_config_instance = MockConfig()
+    camera_test_ips = ["192.168.1.106"]
+
+    logger.info(f"Starting CameraHandler standalone test with IPs: {camera_test_ips}")
+    handler = CameraHandler(camera_test_ips, app_config=mock_config_instance)
+    handler.start_monitoring()
+
+    if handler.connections:
+        test_conn_obj = handler.connections[0]
+        time.sleep(1)
+        logger.info(f"Testing is_gate_alarm_active for {test_conn_obj.camera_ip} (channel {test_conn_obj.gate_alarm_channel_index})...")
+        is_active = test_conn_obj.is_gate_alarm_active()
+        logger.info(f"Gate alarm active status for {test_conn_obj.camera_ip}: {is_active}")
+        time.sleep(1)
+
+    try:
+        for i in range(60): # Reduced duration for typical test
+            new_detections = handler.get_new_detections(timeout=1.0)
+            if new_detections:
+                for det in new_detections:
+                    logger.info(f"MAIN STANDALONE TEST: Got Detection: {det}")
+            else:
+                logger.debug("MAIN STANDALONE TEST: No new detections in this cycle.")
+
+    except KeyboardInterrupt:
+        logger.info("MAIN STANDALONE TEST: Keyboard interrupt received.")
+    finally:
+        logger.info("MAIN STANDALONE TEST: Shutting down CameraHandler...")
+        handler.stop_monitoring()
+        logger.info("MAIN STANDALONE TEST: Test finished.")

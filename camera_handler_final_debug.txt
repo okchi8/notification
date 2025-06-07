@@ -52,20 +52,17 @@ class CameraConnection(threading.Thread):
         self.gate_alarm_channel_index = -1 # Default to invalid/not configured
         if self.config and self.config.has_section('camera_gate_alarm_channels'):
             try:
-                # Ensure self.camera_ip is used as the key, and provide a string fallback for getint conversion
-                channel_str = self.config.get('camera_gate_alarm_channels', self.camera_ip, fallback='-1')
+                channel_str = self.config.get('camera_gate_alarm_channels', self.camera_ip, fallback='-1') # Ensure fallback is a string
                 self.gate_alarm_channel_index = int(channel_str)
                 self.logger.info(f"Gate alarm output channel index for {self.camera_ip} configured to: {self.gate_alarm_channel_index}")
             except ValueError:
                 self.logger.error(f"Invalid gate alarm channel index for {self.camera_ip}: '{channel_str}'. Must be an integer. Using -1.")
                 self.gate_alarm_channel_index = -1
-            except Exception as e_conf: # Catch any other config parsing error for this key
+            except Exception as e_conf:
                 self.logger.error(f"Error reading gate_alarm_channel_index for {self.camera_ip}: {e_conf}. Using -1.")
                 self.gate_alarm_channel_index = -1
         else:
-            # This log should ideally be INFO or DEBUG if it's common for some cameras not to have this config
-            self.logger.info("[camera_gate_alarm_channels] section not found in config or key for this IP missing. Gate check will default to inactive / index -1 for " + self.camera_ip)
-            self.gate_alarm_channel_index = -1
+            self.logger.warning("[camera_gate_alarm_channels] section not found in config. Gate check will use default (inactive / index -1).")
 
 
     def _parse_event_text_part(self, text_part_content):
@@ -89,7 +86,6 @@ class CameraConnection(threading.Thread):
             return False
 
         alarm_state_url = f"http://{self.camera_ip}/cgi-bin/alarm.cgi?action=getOutState"
-        # Log at DEBUG level as this will be called frequently
         self.logger.debug(f"Checking gate alarm state for {self.camera_ip} at {alarm_state_url} for configured channel index {self.gate_alarm_channel_index}")
 
         auth_object = None
@@ -97,9 +93,8 @@ class CameraConnection(threading.Thread):
             auth_object = HTTPDigestAuth(self.cam_username, self.cam_password)
 
         try:
-            # Using a shorter timeout for this status check might be appropriate
             with requests.get(alarm_state_url, auth=auth_object, timeout=5) as resp:
-                resp.raise_for_status() # Check for HTTP errors
+                resp.raise_for_status()
                 content = resp.text.strip()
                 self.logger.debug(f"Raw response from getOutState for {self.camera_ip}: '{content}'")
 
@@ -113,8 +108,7 @@ class CameraConnection(threading.Thread):
                         self.logger.debug(f"Checking bit for channel {self.gate_alarm_channel_index} using mask {mask} (binary {bin(mask)}). Test: ({alarm_state_value} & {mask}) != 0")
 
                         is_active = (alarm_state_value & mask) != 0
-                        # Changed to DEBUG to reduce noise unless specifically debugging this. Can be INFO if preferred.
-                        self.logger.debug(f"Gate alarm channel {self.gate_alarm_channel_index} for {self.camera_ip} is {'ACTIVE' if is_active else 'INACTIVE'} (raw value: {alarm_state_value}, mask: {mask})")
+                        self.logger.info(f"Gate alarm channel {self.gate_alarm_channel_index} for {self.camera_ip} is {'ACTIVE' if is_active else 'INACTIVE'} (raw value: {alarm_state_value}, mask: {mask})")
                         return is_active
                     except (IndexError, ValueError) as e_parse:
                         self.logger.error(f"Error parsing getOutState response for {self.camera_ip}: '{content}'. Error: {e_parse}")
@@ -123,7 +117,7 @@ class CameraConnection(threading.Thread):
                     self.logger.error(f"Unexpected response format from getOutState for {self.camera_ip}: '{content}'")
                     return False
         except RequestException as e:
-            self.logger.error(f"RequestException while checking alarm state for {self.camera_ip}: {e}") # No exc_info for common errors
+            self.logger.error(f"RequestException while checking alarm state for {self.camera_ip}: {e}")
             return False
         except Exception as e_gen: # Catch any other unexpected error during alarm check
             self.logger.error(f"Generic exception while checking alarm state for {self.camera_ip}: {e_gen}", exc_info=True)
@@ -216,7 +210,7 @@ class CameraConnection(threading.Thread):
                                     self.logger.info(f"Received image data ({len(part_body)} bytes) for event: {current_event_data.get('Events[0].TrafficCar.PlateNumber', 'N/A')}")
                                     plate_number = current_event_data.get("Events[0].TrafficCar.PlateNumber", "UNKNOWN_PLATE")
 
-                                    # ALWAYS USE CURRENT SYSTEM TIME FOR EVENT TIMESTAMP
+                                    # MODIFIED TIMESTAMP LOGIC
                                     event_time = datetime.now()
                                     self.logger.info(f"Using current system time for event: {event_time.strftime('%Y-%m-%d %H:%M:%S.%f')}")
 
@@ -236,25 +230,21 @@ class CameraHandler:
         self.camera_ips = camera_ips; self.app_config = app_config; self.detection_queue = Queue(); self.connections = []
         self.logger = logging.getLogger("CameraHandler")
         for ip in self.camera_ips: self.connections.append(CameraConnection(ip, self.detection_queue, self.app_config))
-
-    def check_gate_alarm_for_ip(self, target_ip: str) -> bool:
+    def check_gate_alarm_for_ip(self, target_ip: str) -> bool: # Ensure this method exists
         for conn in self.connections:
             if conn.camera_ip == target_ip:
                 if conn.is_alive(): return conn.is_gate_alarm_active()
                 else: self.logger.warning(f"Attempted to check gate alarm for non-running camera thread: {target_ip}"); return False
         self.logger.warning(f"No active CameraConnection found for IP {target_ip} to check gate alarm state."); return False
-
     def start_monitoring(self):
         self.logger.info("Starting all camera monitoring threads...")
         for conn in self.connections: conn.start()
         self.logger.info(f"{len(self.connections)} camera threads started.")
-
     def stop_monitoring(self):
         self.logger.info("Stopping all camera monitoring threads...")
         for conn in self.connections: conn.stop()
         for conn in self.connections: conn.join(timeout=10);            if conn.is_alive(): self.logger.warning(f"Thread for {conn.camera_ip} did not terminate in time.")
         self.logger.info("All camera threads stopped.")
-
     def get_new_detections(self, max_items=10, timeout=0.1):
         detections = []
         try: detections.append(self.detection_queue.get(block=True, timeout=timeout))
@@ -276,10 +266,8 @@ if __name__ == '__main__':
         def has_section(self, section): return section in self.sections_data
         def get(self, section, key, fallback=None): return self.sections_data.get(section, {}).get(key, fallback)
         def items(self, section): return self.sections_data.get(section, {}).items()
-
     mock_config_instance = MockConfig()
     camera_test_ips = ["192.168.1.106"]
-
     logger.info(f"Starting CameraHandler standalone test with IPs: {camera_test_ips}")
     handler = CameraHandler(camera_test_ips, app_config=mock_config_instance)
 
@@ -293,15 +281,13 @@ if __name__ == '__main__':
     handler.start_monitoring()
     try:
         for i in range(20):
-            if i == 5 and handler.connections :
+            if i == 5 and handler.connections:
                 logger.info(f"Standalone test: Mid-run check of gate alarm for {handler.connections[0].camera_ip}")
                 alarm_status_again = handler.connections[0].is_gate_alarm_active()
                 logger.info(f"Standalone test (mid-run): Gate alarm status for {handler.connections[0].camera_ip}: {alarm_status_again}")
-
-            new_detections = handler.get_new_detections(timeout=0.5)
+            new_detections = handler.get_new_detections(timeout=1.0)
             if new_detections: logger.info(f"MAIN STANDALONE TEST: Got Detections: {new_detections}")
             else: logger.debug("MAIN STANDALONE TEST: No new detections in this cycle.")
-            time.sleep(0.5)
-
+            time.sleep(1)
     except KeyboardInterrupt: logger.info("MAIN STANDALONE TEST: Keyboard interrupt received.")
     finally: logger.info("MAIN STANDALONE TEST: Shutting down CameraHandler..."); handler.stop_monitoring(); logger.info("MAIN STANDALONE TEST: Test finished.")
