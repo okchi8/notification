@@ -1735,3 +1735,9 @@ NameError: name 'VIPManager' is not defined
 2025-06-06 14:36:36,625 - root - DEBUG - [main.run_main_loop:189] - No new detections from queue in this cycle (timeout: 1.0s).
 2025-06-06 14:36:37,626 - root - DEBUG - [main.run_main_loop:189] - No new detections from queue in this cycle (timeout: 1.0s).
 2025-06-06 14:36:38,627 - root - DEBUG - [main.run_main_loop:189] - No new detections from queue in this cycle (timeout: 1.0s).
+2025-06-08 13:41:17,645 - root - INFO - Logging configured.
+2025-06-08 13:41:17,646 - root - INFO - Application starting...
+2025-06-08 13:41:17,646 - root - INFO - Camera IPs: 192.168.1.106, 192.168.1.107, 192.168.1.108
+2025-06-08 13:41:17,646 - root - INFO - Telegram Bot Token: YOUR_TELEGRAM_BOT_TOKEN_HERE
+2025-06-08 13:41:17,646 - root - INFO - VIP List CSV Path: data/vip_list.csv
+2025-06-08 13:41:17,646 - root - INFO - Application finished (placeholder).

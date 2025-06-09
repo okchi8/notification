@@ -86,46 +86,70 @@ class CameraConnection(threading.Thread):
             self.logger.debug(f"Gate alarm check skipped for {self.camera_ip}: channel index not configured or invalid ({self.gate_alarm_channel_index}).")
             return False
 
-        alarm_state_url = f"http://{self.camera_ip}/cgi-bin/alarm.cgi?action=getOutState"
-        # Log at DEBUG level as this will be called frequently
-        self.logger.debug(f"Checking gate alarm state for {self.camera_ip} at {alarm_state_url} for configured channel index {self.gate_alarm_channel_index}")
+        default_duration = 2.0
+        default_interval = 0.5
+        duration = default_duration
+        interval = default_interval
 
+        if self.config and self.config.has_section('gate_check'):
+            duration = self.config.getfloat('gate_check', 'vip_gate_check_duration_seconds', fallback=default_duration)
+            interval = self.config.getfloat('gate_check', 'vip_gate_check_interval_seconds', fallback=default_interval)
+            self.logger.debug(f"Using gate_check settings: duration={duration}s, interval={interval}s")
+        else:
+            self.logger.warning(f"[gate_check] section not found in config. Using defaults: duration={duration}s, interval={interval}s")
+
+        alarm_state_url = f"http://{self.camera_ip}/cgi-bin/alarm.cgi?action=getOutState"
         auth_object = None
         if self.cam_username and self.cam_password:
             auth_object = HTTPDigestAuth(self.cam_username, self.cam_password)
 
-        try:
-            with requests.get(alarm_state_url, auth=auth_object, timeout=5) as resp:
-                resp.raise_for_status()
-                content = resp.text.strip()
-                self.logger.debug(f"Raw response from getOutState for {self.camera_ip}: '{content}'")
+        start_time = time.monotonic()
+        poll_attempt = 0
+        while (time.monotonic() - start_time) < duration:
+            poll_attempt += 1
+            self.logger.debug(f"Polling gate alarm for {self.camera_ip} (attempt {poll_attempt}). Elapsed: {time.monotonic() - start_time:.2f}s / {duration}s")
 
-                if content.startswith("result="):
-                    try:
-                        value_str = content.split('=')[1]
-                        alarm_state_value = int(value_str)
-                        self.logger.debug(f"Parsed alarm_state_value for {self.camera_ip}: {alarm_state_value}")
+            current_poll_is_active = False
+            try:
+                with requests.get(alarm_state_url, auth=auth_object, timeout=5) as resp:
+                    resp.raise_for_status()
+                    content = resp.text.strip()
+                    self.logger.debug(f"Raw response from getOutState (attempt {poll_attempt}) for {self.camera_ip}: '{content}'")
+                    if content.startswith("result="):
+                        try:
+                            value_str = content.split('=')[1]
+                            alarm_state_value = int(value_str)
+                            mask = (1 << self.gate_alarm_channel_index)
+                            current_poll_is_active = (alarm_state_value & mask) != 0
+                            self.logger.debug(f"Gate alarm (attempt {poll_attempt}) for {self.camera_ip} is {'ACTIVE' if current_poll_is_active else 'INACTIVE'} (raw: {alarm_state_value}, mask: {mask}, channel: {self.gate_alarm_channel_index})")
+                        except (IndexError, ValueError) as e_parse:
+                            self.logger.error(f"Error parsing getOutState response (attempt {poll_attempt}) for {self.camera_ip}: '{content}'. Error: {e_parse}")
+                            # Keep current_poll_is_active as False
+                    else:
+                        self.logger.error(f"Unexpected response format (attempt {poll_attempt}) from getOutState for {self.camera_ip}: '{content}'")
+                        # Keep current_poll_is_active as False
+            except RequestException as e:
+                self.logger.error(f"RequestException (attempt {poll_attempt}) while checking alarm state for {self.camera_ip}: {e}")
+                # Keep current_poll_is_active as False
+            except Exception as e_gen:
+                self.logger.error(f"Generic exception (attempt {poll_attempt}) while checking alarm state for {self.camera_ip}: {e_gen}", exc_info=True)
+                # Keep current_poll_is_active as False
 
-                        mask = (1 << self.gate_alarm_channel_index)
-                        self.logger.debug(f"Checking bit for channel {self.gate_alarm_channel_index} using mask {mask} (binary {bin(mask)}). Test: ({alarm_state_value} & {mask}) != 0")
+            if current_poll_is_active:
+                self.logger.info(f"Gate alarm ACTIVE for {self.camera_ip} detected on attempt {poll_attempt} within {time.monotonic() - start_time:.2f}s.")
+                return True
 
-                        is_active = (alarm_state_value & mask) != 0
-                        # Changed to DEBUG to reduce noise unless specifically debugging this. Can be INFO if preferred.
-                        self.logger.debug(f"Gate alarm channel {self.gate_alarm_channel_index} for {self.camera_ip} is {'ACTIVE' if is_active else 'INACTIVE'} (raw value: {alarm_state_value}, mask: {mask})")
-                        return is_active
-                    except (IndexError, ValueError) as e_parse:
-                        self.logger.error(f"Error parsing getOutState response for {self.camera_ip}: '{content}'. Error: {e_parse}")
-                        return False
-                else:
-                    self.logger.error(f"Unexpected response format from getOutState for {self.camera_ip}: '{content}'")
-                    return False
-        except RequestException as e:
-            self.logger.error(f"RequestException while checking alarm state for {self.camera_ip}: {e}") # No exc_info for common errors
-            return False
-        except Exception as e_gen: # Catch any other unexpected error during alarm check
-            self.logger.error(f"Generic exception while checking alarm state for {self.camera_ip}: {e_gen}", exc_info=True)
-            return False
-        return False # Default to False if any step above fails to return explicitly
+            # Check if it's worth sleeping before the next poll
+            if (time.monotonic() - start_time + interval) < duration:
+                self.logger.debug(f"Gate alarm inactive on attempt {poll_attempt}, sleeping for {interval}s.")
+                time.sleep(interval)
+            else:
+                # Not enough time for another full interval sleep, or time is up
+                self.logger.debug(f"Gate alarm inactive on attempt {poll_attempt}. Time nearly up, will do final check or exit.")
+                # Loop condition will handle exit if time is up
+
+        self.logger.info(f"Gate alarm for {self.camera_ip} remained INACTIVE throughout the {duration}s polling window ({poll_attempt} attempts).")
+        return False
 
     def run(self):
         self.logger.info(f"Starting connection thread for {self.camera_ip}")
@@ -189,16 +213,41 @@ class CameraConnection(threading.Thread):
                                 elif header_line.lower().startswith('content-length:'):
                                     try: part_content_length = int(header_line.split(':', 1)[1].strip())
                                     except ValueError: self.logger.warning(f"Could not parse C-L: {header_line.split(':', 1)[1].strip()}"); part_content_length = None
+
                             body_start_offset = end_of_headers_pos + len(b'\r\n\r\n')
-                            next_boundary_pos = buffer.find(expected_boundary, body_start_offset)
-                            if next_boundary_pos == -1:
-                                if part_content_length is not None:
-                                    if len(buffer) >= body_start_offset + part_content_length: part_body = buffer[body_start_offset : body_start_offset + part_content_length]; buffer = buffer[body_start_offset + part_content_length:]
-                                    else:
-                                        if self.logger.isEnabledFor(logging.DEBUG): self.logger.debug(f"Waiting for more data. Body incomplete."); break
+                            part_body_defined_this_iteration = False
+                            part_body = b'' # Initialize part_body
+
+                            if part_content_length is not None:
+                                if len(buffer) >= body_start_offset + part_content_length:
+                                    part_body = buffer[body_start_offset : body_start_offset + part_content_length]
+                                    buffer = buffer[body_start_offset + part_content_length:]
+                                    part_body_defined_this_iteration = True
+                                    # Do NOT break here, proceed to process this part
                                 else:
-                                    if self.logger.isEnabledFor(logging.DEBUG): self.logger.debug(f"Waiting for more data (no C-L). Next boundary not found."); break
-                            else: part_body = buffer[body_start_offset:next_boundary_pos]; buffer = buffer[next_boundary_pos:]
+                                    if self.logger.isEnabledFor(logging.DEBUG):
+                                        self.logger.debug(
+                                            f"Waiting for more data. Body incomplete (Content-Length: {part_content_length}). "
+                                            f"Have {len(buffer) - body_start_offset} bytes for current part. Buffer size: {len(buffer)}"
+                                        )
+                                    break # Break inner loop to fetch more data
+                            else: # part_content_length is None
+                                next_boundary_pos = buffer.find(expected_boundary, body_start_offset)
+                                if next_boundary_pos != -1:
+                                    part_body = buffer[body_start_offset:next_boundary_pos]
+                                    buffer = buffer[next_boundary_pos:]
+                                    part_body_defined_this_iteration = True
+                                    # Do NOT break here, proceed to process this part
+                                else:
+                                    if self.logger.isEnabledFor(logging.DEBUG):
+                                        self.logger.debug(f"Waiting for more data (no C-L and no next boundary found). Buffer head: {buffer[body_start_offset:body_start_offset+100]}")
+                                    break # Break inner loop to fetch more data
+
+                            if not part_body_defined_this_iteration:
+                                # This safeguard break should ideally not be hit if logic above is correct,
+                                # but ensures we don't loop infinitely if part_body isn't defined.
+                                self.logger.debug("part_body was not defined in this iteration, breaking to get more data.")
+                                break
 
                             if part_content_type == 'text/plain':
                                 text_content = part_body.decode('utf-8', errors='ignore').strip()
@@ -220,9 +269,20 @@ class CameraConnection(threading.Thread):
                                     self.event_queue.put(DetectionEvent(plate_number, event_time, self.camera_ip, part_body, current_event_data)); current_event_data = None
                                 else: self.logger.warning("Received image data but no preceding 'TrafficJunction' event data. Discarding.")
                             else: self.logger.debug(f"Skipping part with unhandled Content-Type: {part_content_type}"); current_event_data = None
-                           if buffer.startswith(expected_boundary + b'--'): self.logger.info("End of multipart stream detected after part processing."); break
-                       if self.stop_event.is_set(): self.logger.info("Stop event set, exiting connection loop."); break
-                       self.logger.info(f"Stream ended from {self.camera_ip}. Will attempt to reconnect if not stopping.")
+                            # This checks if the *remaining* buffer starts with the end-of-stream marker
+                            if buffer.startswith(expected_boundary + b'--'):
+                                self.logger.info("End of multipart stream detected after part processing (final boundary found).")
+                                break # Break from the inner while True loop
+
+                        # This check is for the outer loop, after processing all parts found in the current chunk or after breaking from inner loop
+                        if self.stop_event.is_set():
+                            self.logger.info("Stop event set, exiting connection loop.")
+                            break # Break from the for chunk in resp.iter_content()
+
+                    # This message is logged if the stream ends naturally (e.g. server closes connection)
+                    # OR if the stop_event caused the chunk iteration to break.
+                    if not self.stop_event.is_set(): # Only log natural end if not explicitly stopped
+                        self.logger.info(f"Stream ended from {self.camera_ip}. Will attempt to reconnect if not stopping.")
                except RequestException as e: self.logger.error(f"RequestException for {self.camera_ip}: {e}. Retrying in 30s."); self.stop_event.wait(30)
                except Exception as e: self.logger.critical(f"Unhandled exception in connection thread for {self.camera_ip}: {e}", exc_info=True); self.stop_event.wait(60)
            self.logger.info(f"Connection thread for {self.camera_ip} fully stopped.")

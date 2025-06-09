@@ -19,7 +19,7 @@ def setup_logging(log_file, log_level_str):
     logging.basicConfig(level=numeric_level,
                         format='%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s',
                         handlers=[logging.FileHandler(log_file), logging.StreamHandler()])
-    logging.info("Logging configured.")
+    logging.info("Logging configured. Target Level: %s", log_level_str)
 
 def format_telegram_message(vip_details, detection_event, direction="N/A"):
     plate = vip_details.get('plate_number', 'N/A')
@@ -85,7 +85,7 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                     logging.info(f"Processing: Plate={det_event.plate_number}, Cam={det_event.camera_ip}, ImgSize={len(det_event.image_data) if det_event.image_data else 0}, TS={det_event.timestamp}")
                     logging.debug(f"Checking gate alarm status for camera {det_event.camera_ip} regarding event for plate {det_event.plate_number}")
                     is_gate_open = cam_handler.check_gate_alarm_for_ip(det_event.camera_ip)
-                    logging.debug(f"Gate alarm active status for {det_event.camera_ip}: {is_gate_open}")
+                    logging.debug(f"Gate alarm active status for {det_event.camera_ip} (plate {det_event.plate_number}): {is_gate_open}")
 
                     if is_gate_open:
                         logging.info(f"Gate alarm is ACTIVE for camera {det_event.camera_ip}. Proceeding with VIP check for plate {det_event.plate_number}.")
@@ -104,11 +104,11 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                                     watermarked_image_data = add_watermark(det_event.image_data, "GRRA-Chemor,PK")
                                     if watermarked_image_data:
                                         logging.info(f"Watermarked image size for plate {det_event.plate_number}: {len(watermarked_image_data)} bytes.")
-                                        if watermarked_image_data == det_event.image_data:
-                                            logging.warning(f"Watermark may not have been applied or returned original for plate {det_event.plate_number}.")
+                                        if watermarked_image_data == det_event.image_data and len(watermarked_image_data) > 0:
+                                            logging.warning(f"Watermark may not have been effectively applied (data identical) for plate {det_event.plate_number}.")
                                         image_to_send = watermarked_image_data
                                     else:
-                                        logging.warning(f"Watermarking returned None for plate {det_event.plate_number}. Using original image data.")
+                                        logging.warning(f"Watermarking returned None for plate {det_event.plate_number}. Using original image data if available.")
                                 else: logging.warning(f"No image data available for plate {det_event.plate_number} to watermark.")
 
                                 logging.info(f"TIMESTAMP: Before calling send_notification_with_image: {datetime.now()}")
