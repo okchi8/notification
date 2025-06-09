@@ -1,0 +1,167 @@
+from config_loader import load_config
+from camera_handler import CameraHandler
+import logging
+import time
+from datetime import datetime, timedelta
+from vip_manager import VIPManager
+from telegram_notifier import TelegramNotifier
+from image_utils import add_watermark
+
+# Imports for simulation (should be commented out for production)
+# from PIL import Image, ImageDraw
+# from io import BytesIO
+# from camera_handler import DetectionEvent as SimDetectionEvent
+
+def setup_logging(log_file, log_level_str):
+    numeric_level = getattr(logging, log_level_str.upper(), None)
+    if not isinstance(numeric_level, int):
+        raise ValueError(f'Invalid log level: {log_level_str}')
+    logging.basicConfig(level=numeric_level,
+                        format='%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s',
+                        handlers=[logging.FileHandler(log_file), logging.StreamHandler()])
+    logging.info("Logging configured. Target Level: %s", log_level_str)
+
+def format_telegram_message(vip_details, detection_event, direction="N/A"):
+    plate = vip_details.get('plate_number', 'N/A')
+    owner_name = vip_details.get('owner_name', 'N/A')
+    house_number = vip_details.get('house_number', 'N/A')
+    land_number = vip_details.get('land_number', 'N/A')
+    vehicle_type = vip_details.get('type', 'N/A')
+    event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S') \
+        if isinstance(detection_event.timestamp, datetime) else str(detection_event.timestamp)
+    title = "🟢 GRRA Notification:"
+    direction_text = str(direction).upper()
+    if direction_text == "IN" or "IN" in direction_text:
+        direction_emoji_symbol = "➡️🚪 IN"
+    elif direction_text == "OUT":
+        direction_emoji_symbol = "🚪⬅️ OUT"
+    else:
+        direction_emoji_symbol = f"↔️ {direction}"
+    status_line = f"{vehicle_type} {direction_emoji_symbol}"
+    separator = "------------------------"
+    plate_line = f"🚗 Plate: {plate}"
+    owner_line = f"👤 Owner: {owner_name}"
+    house_line = f"🏠 House: {house_number}"
+    land_line = f"🏗️ Land: {land_number}"
+    time_line = f"⏰ Time: {event_time_str}"
+    # camera_line = f"📷 Camera: {detection_event.camera_ip}" # REMOVED as per user request for debug
+    message = (
+        f"{title}\n"
+        f"{status_line}\n"
+        f"{separator}\n"
+        f"{plate_line}\n"
+        f"{owner_line}\n"
+        f"{house_line}\n"
+        f"{land_line}\n"
+        f"{time_line}"
+        # f"{camera_line}" # REMOVED
+    )
+    return message
+
+def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_direction_map):
+    detection_fetch_interval = config.getfloat('app', 'detection_fetch_interval_seconds', fallback=1.0)
+    status_log_interval_minutes = config.getint('app', 'status_log_interval_minutes', fallback=60)
+    last_status_log_time = datetime.now()
+    logging.info(f"Starting main processing loop. Detection fetch interval: {detection_fetch_interval}s.")
+    if status_log_interval_minutes > 0: logging.info(f"Status log interval: {status_log_interval_minutes} minutes.")
+    cam_handler.start_monitoring()
+    try:
+        # Ensure simulation code is commented out for live run
+        # simulation_active = False
+        # simulation_triggered_this_run = False
+        # simulation_timer_start = time.time()
+        while True:
+            detections = []
+            # Ensure simulation code is commented out for live run
+            # if simulation_active and not simulation_triggered_this_run and (time.time() - simulation_timer_start > 5):
+            #    ... (simulation logic commented out) ...
+            # else:
+            #    if not (simulation_active and detections): # Ensure this line is also part of commented block or removed
+            #         detections = cam_handler.get_new_detections(max_items=5, timeout=detection_fetch_interval)
+
+            detections = cam_handler.get_new_detections(max_items=5, timeout=detection_fetch_interval)
+            if detections:
+                for det_event in detections:
+                    logging.info(f"Processing: Plate={det_event.plate_number}, Cam={det_event.camera_ip}, ImgSize={len(det_event.image_data) if det_event.image_data else 0}, TS={det_event.timestamp}")
+                    logging.debug(f"Checking gate alarm status for camera {det_event.camera_ip} regarding event for plate {det_event.plate_number}")
+                    is_gate_open = cam_handler.check_gate_alarm_for_ip(det_event.camera_ip)
+                    logging.debug(f"Gate alarm active status for {det_event.camera_ip} (plate {det_event.plate_number}): {is_gate_open}")
+
+                    if is_gate_open:
+                        logging.info(f"Gate alarm is ACTIVE for camera {det_event.camera_ip}. Proceeding with VIP check for plate {det_event.plate_number}.")
+                        vip_details = vip_manager.get_vip_details(det_event.plate_number)
+                        if vip_details:
+                            logging.info(f"VIP DETECTED: Plate={det_event.plate_number}, Name={vip_details.get('owner_name')}, Type={vip_details.get('type')}")
+                            direction = camera_direction_map.get(det_event.camera_ip, "N/A")
+                            logging.debug(f"Determined direction for cam {det_event.camera_ip} as {direction}")
+                            message_caption = format_telegram_message(vip_details, det_event, direction)
+                            chat_id_to_notify = vip_details.get('chat_id')
+                            if chat_id_to_notify:
+                                image_to_send = det_event.image_data # Default to original
+                                if det_event.image_data:
+                                    logging.info(f"Original image size for plate {det_event.plate_number}: {len(det_event.image_data)} bytes.")
+                                    logging.debug(f"Attempting to add watermark to image for plate {det_event.plate_number}")
+                                    watermarked_image_data = add_watermark(det_event.image_data, "GRRA-Chemor,PK")
+                                    if watermarked_image_data:
+                                        logging.info(f"Watermarked image size for plate {det_event.plate_number}: {len(watermarked_image_data)} bytes.")
+                                        if watermarked_image_data == det_event.image_data and len(watermarked_image_data) > 0:
+                                            logging.warning(f"Watermark may not have been effectively applied (data identical) for plate {det_event.plate_number}.")
+                                        image_to_send = watermarked_image_data
+                                    else:
+                                        logging.warning(f"Watermarking returned None for plate {det_event.plate_number}. Using original image data if available.")
+                                else: logging.warning(f"No image data available for plate {det_event.plate_number} to watermark.")
+
+                                logging.info(f"TIMESTAMP: Before calling send_notification_with_image: {datetime.now()}")
+                                success = telegram_notifier.send_notification_with_image(chat_id_to_notify, message_caption, image_to_send)
+                                logging.info(f"TIMESTAMP: After calling send_notification_with_image: {datetime.now()}")
+                                if success: logging.info(f"Notification with image (sync call) sent for {det_event.plate_number} to {chat_id_to_notify}.")
+                                else: logging.warning(f"Failed to send notification for {det_event.plate_number} to {chat_id_to_notify}.")
+                            else: logging.warning(f"No chat_id for VIP {det_event.plate_number}.")
+                        else: logging.debug(f"Plate {det_event.plate_number} (gate alarm active) is not in VIP list.")
+                    else: logging.info(f"Gate alarm is INACTIVE for camera {det_event.camera_ip}. Notification for plate {det_event.plate_number} will not be sent.")
+            else: logging.debug(f"No new detections from queue in this cycle (timeout: {detection_fetch_interval}s).")
+            if status_log_interval_minutes > 0 and (datetime.now() - last_status_log_time) >= timedelta(minutes=status_log_interval_minutes):
+                active_cam_threads = sum(1 for conn_thread in cam_handler.connections if conn_thread.is_alive())
+                logging.info(f"Application still running. Active camera connections: {active_cam_threads}/{len(cam_handler.connections)}. VIPs loaded: {len(vip_manager.vip_data)}.")
+                last_status_log_time = datetime.now()
+    except KeyboardInterrupt: logging.info("KeyboardInterrupt received. Shutting down application...")
+    except Exception as e: logging.critical(f"An unexpected error in main loop: {e}", exc_info=True)
+    finally: logging.info("Stopping camera monitoring..."); cam_handler.stop_monitoring(); logging.info("Application main loop ended.")
+
+if __name__ == '__main__':
+    try:
+        config = load_config('config.ini')
+        log_file = config.get('app', 'log_file', fallback='anpr_app.log')
+        log_level = "DEBUG" # TEMPORARY FOR DETAILED LIVE TEST
+        setup_logging(log_file, log_level)
+        logging.info("===================================================")
+        logging.info("      ANPR Notification Application Starting     ")
+        logging.info("                (DEBUG LOGGING ENABLED)          ")
+        logging.info("===================================================")
+
+        from vip_manager import VIPManager
+        from telegram_notifier import TelegramNotifier
+
+        camera_ips_str = config.get('cameras', 'ips')
+        camera_ips = [ip.strip() for ip in camera_ips_str.split(',')]
+        vip_csv_path = config.get('files', 'vip_list_csv')
+        bot_token = config.get('telegram', 'bot_token')
+        camera_direction_map = {}
+        if config.has_section('camera_directions'):
+            for ip, direction in config.items('camera_directions'):
+                camera_direction_map[ip.strip()] = direction.strip().upper()
+            logging.info(f"Loaded camera directions: {camera_direction_map}")
+        else: logging.warning("[camera_directions] section not found.")
+        logging.info(f"Camera IPs to monitor: {camera_ips}")
+        logging.info(f"VIP list CSV: {vip_csv_path}")
+        is_placeholder_token = "YOUR_TELEGRAM_BOT_TOKEN_HERE" in bot_token or bot_token.endswith("_PLACEHOLDER") or len(bot_token) < 20
+        logging.info(f"Telegram Bot Token is {'SET' if bot_token and not is_placeholder_token else 'NOT SET or placeholder'}")
+        vip_manager = VIPManager(vip_csv_path)
+        if not vip_manager.vip_data: logging.warning("VIP list empty/failed to load.")
+        telegram_notifier = TelegramNotifier(bot_token)
+        cam_handler = CameraHandler(camera_ips, app_config=config)
+        run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_direction_map)
+    except FileNotFoundError as e: print(f"FATAL STARTUP ERROR (FileNotFound): {e}"); logging.critical(f"FATAL STARTUP ERROR: {e}", exc_info=True)
+    except ValueError as e: print(f"FATAL STARTUP ERROR (ValueError in config): {e}"); logging.critical(f"FATAL STARTUP ERROR (ValueError in config): {e}", exc_info=True)
+    except Exception as e: print(f"AN UNEXPECTED FATAL STARTUP ERROR: {e}"); logging.critical("An unexpected FATAL STARTUP ERROR occurred.", exc_info=True)
+    finally: logging.info("Application shutdown sequence complete.")

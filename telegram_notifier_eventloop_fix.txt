@@ -1,0 +1,158 @@
+import logging
+import telegram
+from io import BytesIO
+import asyncio
+import re
+from datetime import datetime
+import time
+
+def escape_markdown_v2(text: str) -> str:
+    escape_chars = r'_*[]()~`>#+-=|{}.!'
+    return re.sub(f'([{re.escape(escape_chars)}])', r'\\\1', str(text))
+
+class TelegramNotifier:
+    def __init__(self, bot_token):
+        self.bot_token = bot_token
+        if self.bot_token and self.bot_token != "YOUR_TELEGRAM_BOT_TOKEN_HERE" and not "PLACEHOLDER" in self.bot_token:
+            try:
+                self.bot = telegram.Bot(token=self.bot_token) # Initialized here
+                logging.info("Telegram Bot object initialized successfully (sync wrapper version).")
+            except Exception as e:
+                self.bot = None
+                logging.error(f"Failed to initialize Telegram Bot object: {e}. Notifications will be disabled.", exc_info=True)
+        else:
+            self.bot = None
+            logging.warning("Telegram bot token is not configured or is a placeholder. Telegram notifications will be disabled.")
+
+    async def _async_send_text_notification(self, chat_id, message_text_unescaped):
+        # This method now relies on self.bot initialized in __init__
+        if not self.bot:
+            logging.warning(f"Telegram bot not initialized in _async_send_text. Message to {chat_id} not sent.")
+            return True
+        # ... (rest of the async logic from previous correct version, using self.bot) ...
+        if not chat_id or str(chat_id).strip() == "YOUR_DEFAULT_TEST_CHAT_ID_HERE" or not str(chat_id).strip():
+            logging.warning(f"Invalid or placeholder chat_id: '{chat_id}'. Cannot send Telegram message.")
+            return False
+        message_text_escaped = escape_markdown_v2(message_text_unescaped)
+        try:
+            sent_message = await self.bot.send_message(chat_id=str(chat_id).strip(), text=message_text_escaped, parse_mode="MarkdownV2")
+            logging.info(f"Successfully sent Telegram text notification to {chat_id}. Message ID: {sent_message.message_id if sent_message else 'N/A'}")
+            return True
+        except telegram.error.BadRequest as e:
+            logging.error(f"Failed to send Telegram text message to {chat_id} due to BadRequest: {e.message} (escaped text: {message_text_escaped[:100]})", exc_info=True)
+        except telegram.error.TelegramError as e:
+            logging.error(f"Failed to send Telegram text message to {chat_id}: {e.message}", exc_info=True)
+        except Exception as e:
+            logging.error(f"An unexpected error occurred while sending Telegram text message to {chat_id}: {e}", exc_info=True)
+        return False
+
+
+    async def _async_send_notification_with_image(self, chat_id, caption_unescaped, image_data, image_filename="plate.jpg"):
+        if not self.bot:
+            logging.warning(f"Telegram bot not initialized in _async_send_image. Message to {chat_id} not sent.")
+            return True
+        # ... (rest of the async logic, using self.bot) ...
+        if not chat_id or str(chat_id).strip() == "YOUR_DEFAULT_TEST_CHAT_ID_HERE" or not str(chat_id).strip():
+            logging.warning(f"Invalid or placeholder chat_id: '{chat_id}'. Cannot send Telegram image message.")
+            return False
+        caption_escaped = escape_markdown_v2(caption_unescaped)
+        if not image_data:
+            logging.warning(f"No image data provided for notification to {chat_id}. Sending text only.")
+            return await self._async_send_text_notification(chat_id, caption_unescaped)
+        try:
+            photo_file = BytesIO(image_data)
+            photo_file.name = image_filename
+            sent_message = await self.bot.send_photo(
+                chat_id=str(chat_id).strip(), photo=photo_file, caption=caption_escaped, parse_mode="MarkdownV2" )
+            logging.info(f"Successfully sent Telegram notification with image to {chat_id}. Message ID: {sent_message.message_id if sent_message else 'N/A'}")
+            return True
+        except telegram.error.BadRequest as e:
+            logging.error(f"Failed to send Telegram image message to {chat_id} due to BadRequest: {e.message} (escaped caption: {caption_escaped[:100]})", exc_info=True)
+        except telegram.error.NetworkError as e:
+            logging.error(f"Failed to send Telegram image message to {chat_id} due to NetworkError: {e.message}", exc_info=True)
+        except telegram.error.TelegramError as e:
+            logging.error(f"Failed to send Telegram image message to {chat_id}: {e.message}", exc_info=True)
+        except Exception as e:
+            logging.error(f"An unexpected error occurred while sending Telegram image to {chat_id}: {e}", exc_info=True)
+        return False
+
+    def send_text_notification(self, chat_id, message_text_unescaped):
+        if not self.bot: # Added check here for the sync wrapper
+            logging.warning("Sync wrapper: Bot not initialized. Cannot send text.")
+            return False # Return False if bot not init, True was for async to not halt other async tasks
+        try:
+            return asyncio.run(self._async_send_text_notification(chat_id, message_text_unescaped))
+        except RuntimeError as e:
+            logging.error(f"RuntimeError in sync send_text_notification: {e}. This might indicate an issue with asyncio.run() in the current context (e.g. nested calls, or thread issues if not careful).", exc_info=True)
+            return False
+        except Exception as e_gen:
+            logging.error(f"Generic error in sync send_text_notification wrapper: {e_gen}", exc_info=True)
+            return False
+
+    def send_notification_with_image(self, chat_id, caption_unescaped, image_data, image_filename="plate.jpg"):
+        if not self.bot: # Added check here for the sync wrapper
+            logging.warning("Sync wrapper: Bot not initialized. Cannot send image.")
+            return False # Return False if bot not init
+        try:
+            return asyncio.run(self._async_send_notification_with_image(chat_id, caption_unescaped, image_data, image_filename))
+        except RuntimeError as e:
+            logging.error(f"RuntimeError in sync send_notification_with_image: {e}. This might indicate an issue with asyncio.run() in the current context.", exc_info=True)
+            return False
+        except Exception as e_gen:
+            logging.error(f"Generic error in sync send_notification_with_image wrapper: {e_gen}", exc_info=True)
+            return False
+
+if __name__ == '__main__':
+    from PIL import Image, ImageDraw
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s')
+    default_token = "7573502667:AAFDP0N6H9k_tjrSByKK1DRjivj9Z66Ono8"
+    default_chat_id = "814158826"
+    test_bot_token = default_token; test_chat_id = default_chat_id
+    config_loaded_successfully = False
+    try:
+        import configparser; import os
+        config_path = os.path.join(os.path.dirname(__file__), '..', 'config.ini')
+        if os.path.exists(config_path):
+            config = configparser.ConfigParser(); config.read(config_path)
+            test_bot_token = config.get('telegram', 'bot_token', fallback=default_token)
+            test_chat_id = config.get('telegram', 'default_test_chat_id', fallback=default_chat_id)
+            logging.info(f"Loaded token and chat_id from config.ini for sync testing.")
+            config_loaded_successfully = True
+        else: logging.warning(f"config.ini not found at {config_path}. Using hardcoded defaults.")
+    except Exception as e: logging.warning(f"Could not load config.ini: {e}. Using hardcoded defaults.")
+    logging.info(f"Sync Test: Initializing TelegramNotifier with token: '{test_bot_token[:20]}...'")
+    notifier = TelegramNotifier(test_bot_token)
+    if notifier.bot:
+        logging.info(f"Sync Test: Notifier initialized. Sending to chat_id: '{test_chat_id}'")
+        user_chat_id_for_this_test_run = "814158826"
+        if test_chat_id and test_chat_id == user_chat_id_for_this_test_run:
+            simple_text = "ANPR Bot Sync Test (Wrapper): Simple text."
+            logging.info(f"--- Sync Test 1: Simple Text to {test_chat_id} ---")
+            if notifier.send_text_notification(test_chat_id, simple_text): logging.info("Sync Test 1: OK.")
+            else: logging.error("Sync Test 1: FAIL.")
+            time.sleep(2)
+            plate, owner_name = "SYNCASYNC", "Mr. Sync Async"
+            event_time_dt, vehicle_type, direction, camera_ip_test = datetime.now(), "Async Test", "IN", "127.0.0.4"
+            event_time = event_time_dt.strftime('%Y-%m-%d %H:%M:%S')
+            title = "🟢 GRRA Notification (Sync/Async Test):"
+            status_line = f"{vehicle_type} ➡️🚪 {direction}"
+            separator = "------------------------"
+            plate_line, owner_line = f"🚗 Plate: {plate}", f"👤 Owner: {owner_name}"
+            formatted_caption_unescaped = f"{title}\n{status_line}\n{separator}\n{plate_line}\n{owner_line}\n⏰ Time: {event_time}\n📷 Camera: {camera_ip_test}"
+            logging.info(f"--- Sync Test 2: Formatted Text to {test_chat_id} ---")
+            if notifier.send_text_notification(test_chat_id, formatted_caption_unescaped): logging.info("Sync Test 2: OK.")
+            else: logging.error("Sync Test 2: FAIL.")
+            time.sleep(2)
+            logging.info(f"--- Sync Test 3: Image with Caption to {test_chat_id} ---")
+            dummy_image_data = None
+            try:
+                img = Image.new('RGB', (320, 160), color = (128,128,200)); d = ImageDraw.Draw(img)
+                d.text((10,10), f"P: {plate}", fill=(0,0,0)); d.text((10,40), "SYNC/ASYNC", fill=(0,0,0))
+                dummy_image_bytes = BytesIO(); img.save(dummy_image_bytes, format='JPEG'); dummy_image_data = dummy_image_bytes.getvalue()
+            except Exception as e_img: logging.error(f"Error creating dummy image: {e_img}")
+            if dummy_image_data:
+                if notifier.send_notification_with_image(test_chat_id, formatted_caption_unescaped, dummy_image_data): logging.info("Sync Test 3: OK.")
+                else: logging.error("Sync Test 3: FAIL.")
+            else: logging.info("Skipping image test (no dummy image).")
+        else: logging.warning(f"Sync Test: Chat ID from config ('{test_chat_id}') not '{user_chat_id_for_this_test_run}'. Skipping send.")
+    else: logging.warning("Sync Test: Telegram bot could not be initialized.")
