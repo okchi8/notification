@@ -1,4 +1,5 @@
-from config_loader import load_config
+import os # Added
+from config_loader import load_config, prepare_user_file # Modified import, get_app_data_dir is used via config.app_data_dir
 from camera_handler import CameraHandler
 import logging
 import time
@@ -15,20 +16,32 @@ from image_utils import add_watermark
 def setup_logging(log_file, log_level_str):
     numeric_level = getattr(logging, log_level_str.upper(), None)
     if not isinstance(numeric_level, int):
+        # Before logging is fully set up, this might go to stderr or be lost if called very early by other modules
+        # For now, print is a fallback.
+        print(f"CRITICAL: Invalid log level string: {log_level_str}. Cannot configure logging.")
+        # Or raise ValueError, but logging is critical for app health.
+        # Defaulting to INFO if level is bad, or re-raise. For now, let it pass to see if error is caught later.
+        # However, the getLogger().setLevel will fail.
+        # It's better to raise here or have a hardcoded default.
         raise ValueError(f'Invalid log level: {log_level_str}')
+
 
     file_handler = logging.FileHandler(log_file, encoding='utf-8')
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s'))
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s'))
 
-    logger = logging.getLogger()
+    logger = logging.getLogger() # Get root logger
     logger.setLevel(numeric_level)
+
+    # Clear any existing handlers from a previous run (e.g. if this function is called again)
     if logger.hasHandlers():
         logger.handlers.clear()
+
     logger.addHandler(file_handler)
     logger.addHandler(stream_handler)
-    logging.info("Logging configured with UTF-8 file handler.")
+    # This first log message will go to the configured handlers.
+    logging.info(f"Logging configured. Level: {log_level_str}. Log file: {log_file}")
 
 def format_telegram_message(vip_details, detection_event, direction="N/A"):
     plate = vip_details.get('plate_number', 'N/A')
@@ -37,71 +50,45 @@ def format_telegram_message(vip_details, detection_event, direction="N/A"):
     land_number = vip_details.get('land_number', 'N/A')
     vehicle_type = vip_details.get('type', 'N/A')
 
-    # Timestamp formatting
-    event_time_str = "N/A" # Default
+    event_time_str = "N/A"
     if isinstance(detection_event.timestamp, datetime):
         try:
             original_event_time = detection_event.timestamp
-
-            # Handle potentially naive datetime objects from camera_handler if it ever changes
             if original_event_time.tzinfo is None:
-                logging.warning(f"Timestamp for plate {vip_details.get('plate_number', 'N/A')} was naive: {original_event_time}. Attempting to assume it's UTC+8 based on typical camera setup.")
+                logging.warning(f"Timestamp for plate {vip_details.get('plate_number', 'N/A')} was naive: {original_event_time}. Attempting to assume it's UTC+8.")
                 try:
-                    import pytz # Optional: attempt to use pytz if available for robust timezone handling
-                    utc8_tz = pytz.timezone('Etc/GMT-8') # This is a POSIX-style timezone for UTC+8
+                    import pytz
+                    utc8_tz = pytz.timezone('Etc/GMT-8')
                     original_event_time = utc8_tz.localize(original_event_time)
                     logging.info(f"Successfully localized naive timestamp to UTC+8 using pytz: {original_event_time}")
                 except ImportError:
                     logging.error("pytz library not found. Cannot reliably localize naive timestamp if provided. Time adjustment for naive timestamps will be skipped, treating as local.")
-                    pass # Let it proceed, timedelta will operate on naive if it's still naive.
-
-            # Ensure no trailing characters or backslashes on this blank line or comments below
-
-            # Subtract 8 hours as per user request
-            # This makes it effectively UTC if the original was indeed UTC+8 wall clock time
+                    pass
             adjusted_event_time_utc_equivalent = original_event_time - timedelta(hours=8)
-
-            # Convert this adjusted time to the system's local timezone for display.
-            # If system's local timezone is also UTC+8, this will display the adjusted_event_time_utc_equivalent's
-            # wall clock time, but now correctly tagged as local system time (UTC+8).
             final_display_time_local = adjusted_event_time_utc_equivalent.astimezone()
-
-            # Format for display, typically without explicit timezone if it's local.
             event_time_str = final_display_time_local.strftime('%Y-%m-%d %H:%M:%S')
-            # If you want to show the local timezone explicitly:
-            # event_time_str = final_display_time_local.strftime('%Y-%m-%d %H:%M:%S %Z%z')
-
         except Exception as e:
             logging.error(f"Error formatting or converting timestamp {detection_event.timestamp}: {e}", exc_info=True)
-            # Fallback to original formatting (with its timezone) if main logic fails
             if hasattr(detection_event.timestamp, 'tzinfo') and detection_event.timestamp.tzinfo is not None:
                 event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S %Z%z')
-            else: # If it was naive and everything failed
+            else:
                 event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S (Original, Timezone Unknown)')
     else:
-        event_time_str = str(detection_event.timestamp) # Fallback if not a datetime object
+        event_time_str = str(detection_event.timestamp)
 
     title = "🟢 GRRA Notification:"
-
-    # Direction formatting (remains as per previous update)
     direction_keyword_text = str(direction).upper()
     display_direction = str(direction)
-
     direction_emoji = "↔️"
-    if "IN" in direction_keyword_text:
-        direction_emoji = "➡️🚪"
-    elif "OUT" in direction_keyword_text:
-        direction_emoji = "🚪⬅️"
-
+    if "IN" in direction_keyword_text: direction_emoji = "➡️🚪"
+    elif "OUT" in direction_keyword_text: direction_emoji = "🚪⬅️"
     status_line = f"{vehicle_type} {direction_emoji} {display_direction}"
-
     separator = "------------------------"
     plate_line = f"🚗 Plate: {plate}"
     owner_line = f"👤 Owner: {owner_name}"
     house_line = f"🏠 House: {house_number}"
     land_line = f"🏗️ Land: {land_number}"
-    time_line = f"⏰ Time: {event_time_str}" # Uses the new event_time_str
-
+    time_line = f"⏰ Time: {event_time_str}"
     message = (
         f"{title}\n{status_line}\n{separator}\n{plate_line}\n"
         f"{owner_line}\n{house_line}\n{land_line}\n{time_line}"
@@ -164,10 +151,6 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                             logging.warning(f"No chat_id for VIP {det_event.plate_number}. Notification cannot be sent.")
                     else:
                         logging.info(f"Plate '{det_event.plate_number}' is not on the VIP list.")
-                        # Optional: Log gate status for non-VIPs
-                        # logging.debug(f"Informational: Checking gate alarm status for non-VIP plate {det_event.plate_number} from camera {det_event.camera_ip}.")
-                        # is_gate_open_non_vip = cam_handler.check_gate_alarm_for_ip(det_event.camera_ip)
-                        # logging.info(f"Informational: Gate alarm status for non-VIP {det_event.plate_number} (cam: {det_event.camera_ip}) is {'ACTIVE' if is_gate_open_non_vip else 'INACTIVE'}.")
                         pass
             else:
                 logging.debug(f"No new detections from queue in this cycle (timeout: {detection_fetch_interval}s).")
@@ -190,28 +173,54 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
 if __name__ == '__main__':
     cam_handler = None
     telegram_notifier = None
+    # app_data_dir will be defined here after load_config()
     try:
+        # config.ini will be sought in user's app data dir by load_config
         config = load_config('config.ini')
-        log_file = config.get('app', 'log_file', fallback='anpr_app.log')
-        log_level_from_config = config.get('app', 'log_level', fallback='INFO')
-        log_level = log_level_from_config
-        setup_logging(log_file, log_level)
+
+        app_data_dir = config.app_data_dir
+
+        log_file_name_from_config = config.get('app', 'log_file', fallback='anpr_app.log')
+        log_file_path = os.path.join(app_data_dir, log_file_name_from_config) # Corrected variable name
+
+        log_level_str = config.get('app', 'log_level', fallback='INFO') # Corrected variable name
+        setup_logging(log_file_path, log_level_str)
 
         logging.info("===================================================")
-        logging.info("      ANPR Notification Application Starting     ")
-        if log_level == "DEBUG":
+        logging.info(f"      ANPR Notification Application Starting     ")
+        logging.info(f"      User Data Directory: {app_data_dir}      ")
+        if log_level_str == "DEBUG":
             logging.info("                (DEBUG LOGGING ENABLED)          ")
         logging.info("===================================================")
 
         camera_ips_str = config.get('cameras', 'ips')
         if not camera_ips_str:
             logging.critical("Camera IPs not found in config.ini. Exiting.")
-            exit()
+            exit(1)
         camera_ips = [ip.strip() for ip in camera_ips_str.split(',')]
 
-        vip_csv_path = config.get('files', 'vip_list_csv')
-        bot_token = config.get('telegram', 'bot_token')
+        # --- Modify vip_csv_path handling ---
+        # vip_list_filename_in_config is relative to app_data_dir/data
+        vip_list_filename_in_config = config.get('files', 'vip_list_csv', fallback=os.path.join('data', 'vip_list.csv'))
+        # template_relative_path is relative to project/bundle root
+        vip_list_template_relative_path = os.path.join('data', 'vip_list.csv.example')
 
+        # prepare_user_file expects filename_in_user_dir to be relative to app_data_dir
+        # So, vip_list_filename_in_config should already be like "data/vip_list.csv"
+        vip_csv_path_in_user_dir = prepare_user_file(
+            app_data_dir,
+            vip_list_filename_in_config,
+            vip_list_template_relative_path
+        )
+
+        if not vip_csv_path_in_user_dir:
+            logging.critical(f"VIP list CSV ('{vip_list_filename_in_config}') could not be prepared in user data directory '{app_data_dir}'. Exiting.")
+            exit(1)
+
+        logging.info(f"Using VIP list from: {vip_csv_path_in_user_dir}")
+        # --- End vip_csv_path handling ---
+
+        bot_token = config.get('telegram', 'bot_token')
         camera_direction_map = {}
         if config.has_section('camera_directions'):
             for ip, direction in config.items('camera_directions'):
@@ -221,14 +230,13 @@ if __name__ == '__main__':
             logging.warning("[camera_directions] section not found in config.ini.")
 
         logging.info(f"Camera IPs to monitor: {camera_ips}")
-        logging.info(f"VIP list CSV: {vip_csv_path}")
 
         is_placeholder_token = not bot_token or "YOUR_TELEGRAM_BOT_TOKEN_HERE" in bot_token or bot_token.endswith("_PLACEHOLDER") or len(bot_token) < 20
         logging.info(f"Telegram Bot Token is {'SET' if not is_placeholder_token else 'NOT SET or placeholder'}")
 
-        vip_manager = VIPManager(vip_csv_path)
+        vip_manager = VIPManager(vip_csv_path_in_user_dir)
         if not vip_manager.vip_data:
-            logging.warning("VIP list empty or failed to load. Check CSV path and format if this is unexpected.")
+            logging.warning(f"VIP list at '{vip_csv_path_in_user_dir}' is empty or failed to load. Check CSV path and format if this is unexpected.")
 
         telegram_notifier = TelegramNotifier(bot_token)
         if not telegram_notifier.bot and not is_placeholder_token :
@@ -239,27 +247,36 @@ if __name__ == '__main__':
         run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_direction_map)
 
     except FileNotFoundError as e:
-        print(f"FATAL STARTUP ERROR (FileNotFound): {e}. Please ensure 'config.ini' exists.")
-        logging.critical(f"FATAL STARTUP ERROR: {e}", exc_info=True)
+        print(f"FATAL STARTUP ERROR (FileNotFound): {e}. Please ensure necessary files/templates exist.")
+        if logging.getLogger().hasHandlers(): # Check if logging was set up
+            logging.critical(f"FATAL STARTUP ERROR: {e}", exc_info=True)
     except ValueError as e:
-        print(f"FATAL STARTUP ERROR (ValueError in config): {e}")
-        logging.critical(f"FATAL STARTUP ERROR (ValueError in config): {e}", exc_info=True)
+        print(f"FATAL STARTUP ERROR (ValueError in config/setup): {e}")
+        if logging.getLogger().hasHandlers():
+            logging.critical(f"FATAL STARTUP ERROR (ValueError in config/setup): {e}", exc_info=True)
     except Exception as e:
         print(f"AN UNEXPECTED FATAL STARTUP ERROR: {e}")
-        logging.critical("An unexpected FATAL STARTUP ERROR occurred.", exc_info=True)
+        if logging.getLogger().hasHandlers():
+            logging.critical("An unexpected FATAL STARTUP ERROR occurred.", exc_info=True)
     finally:
-        logging.info("Initiating application shutdown sequence (from __main__ finally block)...")
+        if logging.getLogger().hasHandlers(): # Only log if logging was set up
+            logging.info("Initiating application shutdown sequence (from __main__ finally block)...")
 
-        if cam_handler and hasattr(cam_handler, 'stop_monitoring'):
-            logging.info("Stopping camera monitoring (from __main__ finally block)...")
-            cam_handler.stop_monitoring()
-        else:
-            logging.info("Camera handler (cam_handler) not available or not initialized for shutdown in __main__ finally.")
+            if cam_handler and hasattr(cam_handler, 'stop_monitoring'):
+                logging.info("Stopping camera monitoring (from __main__ finally block)...")
+                cam_handler.stop_monitoring()
+            else:
+                logging.info("Camera handler (cam_handler) not available or not initialized for shutdown in __main__ finally.")
 
-        if telegram_notifier and hasattr(telegram_notifier, 'shutdown'):
-            logging.info("Shutting down TelegramNotifier (from __main__ finally block)...")
-            telegram_notifier.shutdown()
-        else:
-            logging.info("Telegram notifier (telegram_notifier) not available or not initialized for shutdown in __main__ finally.")
+            if telegram_notifier and hasattr(telegram_notifier, 'shutdown'):
+                logging.info("Shutting down TelegramNotifier (from __main__ finally block)...")
+                telegram_notifier.shutdown()
+            else:
+                logging.info("Telegram notifier (telegram_notifier) not available or not initialized for shutdown in __main__ finally.")
 
-        logging.info("Application shutdown sequence complete.")
+            logging.info("Application shutdown sequence complete.")
+        else: # If logging wasn't even set up, print to console
+            print("Application shutdown sequence initiated (logging not configured).")
+            if cam_handler: print("Attempting to stop camera handler...")
+            if telegram_notifier: print("Attempting to shutdown telegram notifier...")
+            print("Application shutdown sequence complete.")

@@ -1,0 +1,45 @@
+[cameras]
+ips = 192.168.1.106, 192.168.1.107, 192.168.1.108
+username = admin
+password = YOUR_CAMERA_PASSWORD_HERE
+
+[telegram]
+bot_token = YOUR_TELEGRAM_BOT_TOKEN_HERE
+# default_test_chat_id = YOUR_TEST_CHAT_ID_HERE (used in telegram_notifier.py standalone test)
+
+[files]
+vip_list_csv = data/vip_list.csv
+
+[app]
+log_file = anpr_app.log
+log_level = INFO ; DEBUG, INFO, WARNING, ERROR, CRITICAL
+detection_fetch_interval_seconds = 1.0
+status_log_interval_minutes = 5
+
+[camera_directions]
+; Define the direction for each camera IP. Used in Telegram messages.
+; Example:
+; 192.168.1.106 = V/R-IN (Main Gate - Vehicle/Resident IN)
+; 192.168.1.107 = R-IN (Side Gate - Resident IN)
+; 192.168.1.108 = OUT (Main Gate - OUT)
+192.168.1.106 = V/R-IN
+192.168.1.107 = R-IN
+192.168.1.108 = OUT
+
+[camera_gate_alarm_channels]
+; Define the alarm output channel index (0-based) that corresponds to the gate trigger for each camera.
+; This is used by the (currently bypassed for VIPs) check_gate_alarm_for_ip function.
+; If a camera does not have a gate alarm to check, or if this feature is not used,
+; you can omit its IP here or set its channel index to -1.
+; Example:
+; 192.168.1.106 = 0
+; 192.168.1.107 = 0
+; 192.168.1.108 = 0
+192.168.1.106 = 0
+192.168.1.107 = 0
+192.168.1.108 = 0
+
+[gate_check]
+; Settings for the check_gate_alarm_for_ip polling (currently only used for non-VIPs if uncommented in main.py)
+vip_gate_check_duration_seconds = 2.0
+vip_gate_check_interval_seconds = 0.25
