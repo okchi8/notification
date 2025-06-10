@@ -36,71 +36,21 @@ def format_telegram_message(vip_details, detection_event, direction="N/A"):
     house_number = vip_details.get('house_number', 'N/A')
     land_number = vip_details.get('land_number', 'N/A')
     vehicle_type = vip_details.get('type', 'N/A')
-
-    # Timestamp formatting
-    event_time_str = "N/A" # Default
-    if isinstance(detection_event.timestamp, datetime):
-        try:
-            original_event_time = detection_event.timestamp
-
-            # Handle potentially naive datetime objects from camera_handler if it ever changes
-            if original_event_time.tzinfo is None:
-                logging.warning(f"Timestamp for plate {vip_details.get('plate_number', 'N/A')} was naive: {original_event_time}. Attempting to assume it's UTC+8 based on typical camera setup.")
-                try:
-                    import pytz # Optional: attempt to use pytz if available for robust timezone handling
-                    utc8_tz = pytz.timezone('Etc/GMT-8') # This is a POSIX-style timezone for UTC+8
-                    original_event_time = utc8_tz.localize(original_event_time)
-                    logging.info(f"Successfully localized naive timestamp to UTC+8 using pytz: {original_event_time}")
-                except ImportError:
-                    logging.error("pytz library not found. Cannot reliably localize naive timestamp if provided. Time adjustment for naive timestamps will be skipped, treating as local.")
-                    pass # Let it proceed, timedelta will operate on naive if it's still naive.
-
-            # Ensure no trailing characters or backslashes on this blank line or comments below
-
-            # Subtract 8 hours as per user request
-            # This makes it effectively UTC if the original was indeed UTC+8 wall clock time
-            adjusted_event_time_utc_equivalent = original_event_time - timedelta(hours=8)
-
-            # Convert this adjusted time to the system's local timezone for display.
-            # If system's local timezone is also UTC+8, this will display the adjusted_event_time_utc_equivalent's
-            # wall clock time, but now correctly tagged as local system time (UTC+8).
-            final_display_time_local = adjusted_event_time_utc_equivalent.astimezone()
-
-            # Format for display, typically without explicit timezone if it's local.
-            event_time_str = final_display_time_local.strftime('%Y-%m-%d %H:%M:%S')
-            # If you want to show the local timezone explicitly:
-            # event_time_str = final_display_time_local.strftime('%Y-%m-%d %H:%M:%S %Z%z')
-
-        except Exception as e:
-            logging.error(f"Error formatting or converting timestamp {detection_event.timestamp}: {e}", exc_info=True)
-            # Fallback to original formatting (with its timezone) if main logic fails
-            if hasattr(detection_event.timestamp, 'tzinfo') and detection_event.timestamp.tzinfo is not None:
-                event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S %Z%z')
-            else: # If it was naive and everything failed
-                event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S (Original, Timezone Unknown)')
-    else:
-        event_time_str = str(detection_event.timestamp) # Fallback if not a datetime object
+    event_time_str = detection_event.timestamp.strftime('%Y-%m-%d %H:%M:%S') if isinstance(detection_event.timestamp, datetime) else str(detection_event.timestamp)
 
     title = "🟢 GRRA Notification:"
+    direction_text = str(direction).upper()
+    if "IN" in direction_text: direction_emoji_symbol = "➡️🚪 IN"
+    elif direction_text == "OUT": direction_emoji_symbol = "🚪⬅️ OUT"
+    else: direction_emoji_symbol = f"↔️ {direction}"
 
-    # Direction formatting (remains as per previous update)
-    direction_keyword_text = str(direction).upper()
-    display_direction = str(direction)
-
-    direction_emoji = "↔️"
-    if "IN" in direction_keyword_text:
-        direction_emoji = "➡️🚪"
-    elif "OUT" in direction_keyword_text:
-        direction_emoji = "🚪⬅️"
-
-    status_line = f"{vehicle_type} {direction_emoji} {display_direction}"
-
+    status_line = f"{vehicle_type} {direction_emoji_symbol}"
     separator = "------------------------"
     plate_line = f"🚗 Plate: {plate}"
     owner_line = f"👤 Owner: {owner_name}"
     house_line = f"🏠 House: {house_number}"
     land_line = f"🏗️ Land: {land_number}"
-    time_line = f"⏰ Time: {event_time_str}" # Uses the new event_time_str
+    time_line = f"⏰ Time: {event_time_str}"
 
     message = (
         f"{title}\n{status_line}\n{separator}\n{plate_line}\n"
@@ -127,12 +77,16 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                 for det_event in detections:
                     logging.info(f"Processing event: Plate='{det_event.plate_number}', CamIP='{det_event.camera_ip}', Timestamp='{det_event.timestamp}', ImgSize={len(det_event.image_data) if det_event.image_data else 0}")
 
+                    # 1. Check VIP status first
                     vip_details = vip_manager.get_vip_details(det_event.plate_number)
 
                     if vip_details:
+                        # 2a. Is a VIP - Proceed with notification regardless of gate status
                         logging.info(f"VIP DETECTED: Plate='{det_event.plate_number}', Name='{vip_details.get('owner_name', 'N/A')}', Type='{vip_details.get('type', 'N/A')}'. Gate alarm check is bypassed for VIP notification.")
+
                         direction = camera_direction_map.get(det_event.camera_ip, "N/A")
                         logging.debug(f"Determined direction for cam {det_event.camera_ip} as {direction} for VIP plate {det_event.plate_number}")
+
                         message_caption = format_telegram_message(vip_details, det_event, direction)
                         chat_id_to_notify = vip_details.get('chat_id')
 
@@ -141,6 +95,7 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                             if det_event.image_data:
                                 logging.info(f"Original image size for VIP plate {det_event.plate_number}: {len(det_event.image_data)} bytes.")
                                 logging.debug(f"Attempting to add watermark to image for VIP plate {det_event.plate_number}")
+
                                 watermarked_image_data = add_watermark(det_event.image_data, "GRRA-Chemor,PK")
                                 if watermarked_image_data:
                                     logging.info(f"Watermarked image size for VIP plate {det_event.plate_number}: {len(watermarked_image_data)} bytes.")
@@ -162,14 +117,18 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
                                 logging.warning(f"Failed to send VIP notification for {det_event.plate_number} to {chat_id_to_notify}.")
                         else:
                             logging.warning(f"No chat_id for VIP {det_event.plate_number}. Notification cannot be sent.")
+
                     else:
+                        # 2b. Is NOT a VIP
                         logging.info(f"Plate '{det_event.plate_number}' is not on the VIP list.")
-                        # Optional: Log gate status for non-VIPs
+
+                        # Optional: Log gate status for non-VIPs for informational purposes
                         # logging.debug(f"Informational: Checking gate alarm status for non-VIP plate {det_event.plate_number} from camera {det_event.camera_ip}.")
                         # is_gate_open_non_vip = cam_handler.check_gate_alarm_for_ip(det_event.camera_ip)
                         # logging.info(f"Informational: Gate alarm status for non-VIP {det_event.plate_number} (cam: {det_event.camera_ip}) is {'ACTIVE' if is_gate_open_non_vip else 'INACTIVE'}.")
-                        pass
-            else:
+                        pass # Explicitly no notification action for non-VIPs here
+
+            else: # No detections in this cycle
                 logging.debug(f"No new detections from queue in this cycle (timeout: {detection_fetch_interval}s).")
 
             if status_log_interval_minutes > 0 and (datetime.now() - last_status_log_time) >= timedelta(minutes=status_log_interval_minutes):
@@ -183,15 +142,17 @@ def run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_di
         logging.critical(f"An unexpected error in main loop: {e}", exc_info=True)
     finally:
         logging.info("Stopping camera monitoring (from run_main_loop finally block)...")
-        if 'cam_handler' in locals() and cam_handler:
+        if 'cam_handler' in locals() and cam_handler: # Ensure cam_handler exists
             cam_handler.stop_monitoring()
         logging.info("Application main loop ended.")
 
 if __name__ == '__main__':
+    # Variables that might not be defined if an early exception occurs before their assignment
     cam_handler = None
     telegram_notifier = None
     try:
         config = load_config('config.ini')
+
         log_file = config.get('app', 'log_file', fallback='anpr_app.log')
         log_level_from_config = config.get('app', 'log_level', fallback='INFO')
         log_level = log_level_from_config
@@ -230,11 +191,11 @@ if __name__ == '__main__':
         if not vip_manager.vip_data:
             logging.warning("VIP list empty or failed to load. Check CSV path and format if this is unexpected.")
 
-        telegram_notifier = TelegramNotifier(bot_token)
+        telegram_notifier = TelegramNotifier(bot_token) # Instantiated here
         if not telegram_notifier.bot and not is_placeholder_token :
              logging.warning("TelegramNotifier bot object may not have initialized correctly (e.g. bad token) despite token being set. Notifications might be disabled.")
 
-        cam_handler = CameraHandler(camera_ips, app_config=config)
+        cam_handler = CameraHandler(camera_ips, app_config=config) # Instantiated here
 
         run_main_loop(config, cam_handler, vip_manager, telegram_notifier, camera_direction_map)
 
@@ -250,13 +211,13 @@ if __name__ == '__main__':
     finally:
         logging.info("Initiating application shutdown sequence (from __main__ finally block)...")
 
-        if cam_handler and hasattr(cam_handler, 'stop_monitoring'):
+        if cam_handler and hasattr(cam_handler, 'stop_monitoring'): # Check if cam_handler was successfully initialized
             logging.info("Stopping camera monitoring (from __main__ finally block)...")
             cam_handler.stop_monitoring()
         else:
             logging.info("Camera handler (cam_handler) not available or not initialized for shutdown in __main__ finally.")
 
-        if telegram_notifier and hasattr(telegram_notifier, 'shutdown'):
+        if telegram_notifier and hasattr(telegram_notifier, 'shutdown'): # Check if telegram_notifier was successfully initialized
             logging.info("Shutting down TelegramNotifier (from __main__ finally block)...")
             telegram_notifier.shutdown()
         else:

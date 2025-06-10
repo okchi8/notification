@@ -1,0 +1,12 @@
+[
+  {
+    "ip_address": "192.168.1.106",
+    "name": "R-IN (Gate Camera 1 - DHI-ITC413-PW4D-Z1)",
+    "event_configuration": {
+      "method": "PictureHttpUpload",
+      "event_code": "TrafficJunction",
+      "listener_url": "http://192.168.1.118:5000/event_listener"
+    },
+    "notes": "Configured for ANPR VIP notifications via http_listener.py. Sends 'TrafficJunction' events."
+  }
+]
