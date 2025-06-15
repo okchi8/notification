@@ -31,7 +31,7 @@ def setup_logging(log_file, log_level_str):
     stream_handler = logging.StreamHandler()
     stream_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - [%(module)s.%(funcName)s:%(lineno)d] - %(message)s'))
 
-    logger = logging.getLogger() # Get root logger
+    logger = logging.getLogger('main') # Get root logger
     logger.setLevel(numeric_level)
 
     # Clear any existing handlers from a previous run (e.g. if this function is called again)
